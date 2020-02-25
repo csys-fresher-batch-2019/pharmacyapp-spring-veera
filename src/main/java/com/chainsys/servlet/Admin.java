@@ -22,7 +22,8 @@ public class Admin extends HttpServlet {
 		AdminDAO com = new AdminDAOImplementation();
       String name=request.getParameter("name");
       System.out.println(name);
-		
+      HttpSession sess=request.getSession();  
+      sess.setAttribute("uname",name);  
 
       String password=request.getParameter("password");
       System.out.println(password);
