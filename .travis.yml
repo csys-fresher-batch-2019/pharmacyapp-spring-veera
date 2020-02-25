@@ -1,0 +1,11 @@
+language: java
+deploy:
+  provider: cloudfoundry
+  username: veeradinesh7080@gmail.com
+  password: Dinesh7080sece@
+  api: https://api.run.pivotal.io
+  organization: pharmacyapp
+  space: development
+  manifest: manifest.yml
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
