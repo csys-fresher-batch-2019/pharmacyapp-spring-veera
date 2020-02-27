@@ -10,7 +10,7 @@
 <%  
 HttpSession sese = request.getSession();
 
-  String name=(String)sese.getAttribute("uname");
+  String name=(String)sese.getAttribute("name");
 %> 
     <div class="navbar-header">
       <a class="navbar-brand" href="welcome.jsp">PharmacyApp</a>

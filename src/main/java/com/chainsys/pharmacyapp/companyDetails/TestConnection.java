@@ -12,6 +12,7 @@ public class TestConnection {
 		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Kolkata"));
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@13.235.147.120:1521:XE", "veera", "veera");
+	//	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "oracle");
 		return con;
 	}
 
