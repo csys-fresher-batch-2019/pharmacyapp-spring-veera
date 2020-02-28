@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.purchaseDetails;
+package com.chainsys.pharmacyapp.daoImplementation;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import com.chainsys.pharmacyapp.model.Purchase;
 
 
 

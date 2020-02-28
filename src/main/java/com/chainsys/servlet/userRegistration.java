@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.pharmacyapp.login.UserDAOImplementation;
-import com.chainsys.pharmacyapp.login.UserDetails;
+import com.chainsys.pharmacyapp.daoImplementation.UserDAOImplementation;
+import com.chainsys.pharmacyapp.model.UserDetails;
 
 @WebServlet("/userRegistration")
 

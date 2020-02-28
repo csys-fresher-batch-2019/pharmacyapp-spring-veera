@@ -1,6 +1,8 @@
-package com.chainsys.pharmacyapp.companyDetails;
+package com.chainsys.pharmacyapp.dao;
 
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
+
+import com.chainsys.pharmacyapp.model.CompanyModel;
 
 //interface
 public interface CompanyDAO

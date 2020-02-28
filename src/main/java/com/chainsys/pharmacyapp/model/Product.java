@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.productDetails;
+package com.chainsys.pharmacyapp.model;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -6,7 +6,6 @@ import java.util.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import com.chainsys.pharmacyapp.companyDetails.CompanyModel;
 
 /**TestModel
  * 

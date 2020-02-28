@@ -1,4 +1,4 @@
- package com.chainsys.pharmacyapp.login;
+ package com.chainsys.pharmacyapp.daoImplementation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import com.chainsys.pharmacyapp.dao.UserDAO;
+import com.chainsys.pharmacyapp.model.UserDetails;
 
 
 

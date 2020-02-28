@@ -1,6 +1,8 @@
-package com.chainsys.pharmacyapp.productDetails;
+package com.chainsys.pharmacyapp.dao;
 
 import java.util.ArrayList;
+
+import com.chainsys.pharmacyapp.model.Product;
 
 //write methods using table name
 public interface ProductDAO {

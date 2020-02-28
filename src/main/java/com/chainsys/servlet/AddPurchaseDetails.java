@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.pharmacyapp.purchaseDetails.Purchase;
-import com.chainsys.pharmacyapp.purchaseDetails.PurchaseImplementation;
+import com.chainsys.pharmacyapp.daoImplementation.PurchaseImplementation;
+import com.chainsys.pharmacyapp.model.Purchase;
 
 @WebServlet("/AddPurchaseDetails")
 

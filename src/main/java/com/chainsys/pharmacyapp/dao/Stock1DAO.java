@@ -1,4 +1,6 @@
-package com.chainsys.pharmacyapp.stock1Details;
+package com.chainsys.pharmacyapp.dao;
+
+import com.chainsys.pharmacyapp.model.Stock1;
 
 public interface Stock1DAO {
 int addStockDetails(Stock1 s)throws Exception;

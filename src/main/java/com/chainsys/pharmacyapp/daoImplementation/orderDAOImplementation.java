@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.orderDetails;
+package com.chainsys.pharmacyapp.daoImplementation;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import com.chainsys.pharmacyapp.dao.orderDAO;
+import com.chainsys.pharmacyapp.model.Order;
 
 
 

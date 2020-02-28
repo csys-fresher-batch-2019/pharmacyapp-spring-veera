@@ -1,4 +1,6 @@
-package com.chainsys.pharmacyapp.login;
+package com.chainsys.pharmacyapp.dao;
+
+import com.chainsys.pharmacyapp.model.UserDetails;
 
 public interface UserDAO {
 int addUserDetails(UserDetails p) throws Exception;

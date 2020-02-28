@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.purchaseDetails;
+package com.chainsys.pharmacyapp.model;
 
 import java.util.Date;
 

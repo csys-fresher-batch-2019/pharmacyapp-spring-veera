@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.chainsys.pharmacyapp.admin.AdminDAO;
-import com.chainsys.pharmacyapp.admin.AdminDAOImplementation;
+import com.chainsys.pharmacyapp.dao.AdminDAO;
+import com.chainsys.pharmacyapp.daoImplementation.AdminDAOImplementation;
 @WebServlet("/Admin")
 
 public class Admin extends HttpServlet {

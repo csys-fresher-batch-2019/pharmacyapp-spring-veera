@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.salesDetails;
+package com.chainsys.pharmacyapp.model;
 
 import java.time.LocalDateTime;
 import java.util.*;

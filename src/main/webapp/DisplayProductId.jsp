@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<%@page import="com.chainsys.pharmacyapp.productDetails.Product"%>
+<%@page import="com.chainsys.pharmacyapp.model.Product"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.chainsys.pharmacyapp.productDetails.ProductImplementation"%>
+<%@page import="com.chainsys.pharmacyapp.daoImplementation.ProductImplementation"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

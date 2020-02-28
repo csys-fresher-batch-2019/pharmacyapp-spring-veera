@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.admin;
+package com.chainsys.pharmacyapp.dao;
 
 public interface AdminDAO {
 	

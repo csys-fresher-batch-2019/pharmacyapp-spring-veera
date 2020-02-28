@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.stock1Details;
+package com.chainsys.pharmacyapp.daoImplementation;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import com.chainsys.pharmacyapp.dao.Stock1DAO;
+import com.chainsys.pharmacyapp.model.Stock1;
 
 import java.sql.SQLException;
 

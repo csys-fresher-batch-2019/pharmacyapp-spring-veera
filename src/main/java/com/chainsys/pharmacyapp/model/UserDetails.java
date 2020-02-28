@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.login;
+package com.chainsys.pharmacyapp.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

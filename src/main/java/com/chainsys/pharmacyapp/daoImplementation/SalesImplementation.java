@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.salesDetails;
+package com.chainsys.pharmacyapp.daoImplementation;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -10,6 +10,8 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import com.chainsys.pharmacyapp.dao.SalesDAO;
+import com.chainsys.pharmacyapp.model.Sales;
 
 
 

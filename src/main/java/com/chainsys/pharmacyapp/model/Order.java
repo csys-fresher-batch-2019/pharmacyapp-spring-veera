@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.orderDetails;
+package com.chainsys.pharmacyapp.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

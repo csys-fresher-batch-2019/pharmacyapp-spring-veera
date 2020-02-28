@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.productDetails;
+package com.chainsys.pharmacyapp.daoImplementation;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import com.chainsys.pharmacyapp.dao.ProductDAO;
+import com.chainsys.pharmacyapp.model.Product;
 
 import java.sql.SQLException;
 

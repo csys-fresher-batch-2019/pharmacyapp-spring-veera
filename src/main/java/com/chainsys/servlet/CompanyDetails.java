@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.pharmacyapp.companyDetails.CompanyImplementation;
-import com.chainsys.pharmacyapp.companyDetails.CompanyModel;
+import com.chainsys.pharmacyapp.daoImplementation.CompanyImplementation;
+import com.chainsys.pharmacyapp.model.CompanyModel;
 
 @WebServlet("/CompanyDetails")
 

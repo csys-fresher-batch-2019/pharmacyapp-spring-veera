@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.purchaseDetails;
+package com.chainsys.pharmacyapp.dao;
 
 public interface PurchaseDAO {
 void addPurchaseDetails(PurchaseDAO p) throws Exception;
