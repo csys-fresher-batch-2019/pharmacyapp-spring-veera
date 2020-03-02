@@ -1,20 +1,17 @@
-package com.chainsys.pharmacyapp.daoImplementation;
+package com.chainsys.pharmacyapp.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.Scanner;
 
-import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import org.springframework.stereotype.Repository;
+
 import com.chainsys.pharmacyapp.dao.SalesDAO;
 import com.chainsys.pharmacyapp.model.Sales;
+import com.chainsys.pharmacyapp.util.TestConnection;
 
 
-
+@Repository
 
 public class SalesImplementation implements SalesDAO {
 	public int addSalesDetails(Sales se)throws Exception

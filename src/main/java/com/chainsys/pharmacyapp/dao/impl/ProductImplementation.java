@@ -1,19 +1,17 @@
-package com.chainsys.pharmacyapp.daoImplementation;
+package com.chainsys.pharmacyapp.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import org.springframework.stereotype.Repository;
+
 import com.chainsys.pharmacyapp.dao.ProductDAO;
 import com.chainsys.pharmacyapp.model.Product;
-
-import java.sql.SQLException;
-
+import com.chainsys.pharmacyapp.util.TestConnection;
+@Repository
 public class ProductImplementation implements ProductDAO {
 
 	public int addProductDetails(Product p) throws Exception {

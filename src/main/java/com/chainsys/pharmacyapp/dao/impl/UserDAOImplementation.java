@@ -1,4 +1,4 @@
- package com.chainsys.pharmacyapp.daoImplementation;
+ package com.chainsys.pharmacyapp.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,12 +6,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
-import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import org.springframework.stereotype.Repository;
+
 import com.chainsys.pharmacyapp.dao.UserDAO;
 import com.chainsys.pharmacyapp.model.UserDetails;
+import com.chainsys.pharmacyapp.util.TestConnection;
 
 
-
+@Repository
 public class UserDAOImplementation implements UserDAO {
 	static 	Scanner sc = new Scanner(System.in);
 

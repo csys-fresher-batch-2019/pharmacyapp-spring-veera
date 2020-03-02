@@ -1,13 +1,15 @@
-package com.chainsys.pharmacyapp.daoImplementation;
+package com.chainsys.pharmacyapp.dao.impl;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import org.springframework.stereotype.Repository;
+
 import com.chainsys.pharmacyapp.dao.AdminDAO;
+import com.chainsys.pharmacyapp.util.TestConnection;
 
-
+@Repository
 
 
 public class AdminDAOImplementation implements AdminDAO{

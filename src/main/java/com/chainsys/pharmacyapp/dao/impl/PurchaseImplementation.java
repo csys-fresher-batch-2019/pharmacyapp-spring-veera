@@ -1,16 +1,17 @@
-package com.chainsys.pharmacyapp.daoImplementation;
+package com.chainsys.pharmacyapp.dao.impl;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import org.springframework.stereotype.Repository;
+
 import com.chainsys.pharmacyapp.model.Purchase;
+import com.chainsys.pharmacyapp.util.TestConnection;
 
 
 
-
+@Repository
 public class PurchaseImplementation {
 	public int addPurchaseDetails(Purchase p) throws Exception {
 		String sql = "insert into purchase(purchase_id,product_id,purchase_date,company_id,purchase_quantity,amount) values(purchase_id.nextval,"+p.getProductId()+",SYSDATE,"+p.getCompanyId()+","+p.getPurchaseQuantity()+","+p.getAmount()+")";

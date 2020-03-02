@@ -3,7 +3,7 @@ package com.chainsys.pharmacyapp.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import pharmacyapp.admin.AdminDetails;
+
 
 @Data
 @ToString

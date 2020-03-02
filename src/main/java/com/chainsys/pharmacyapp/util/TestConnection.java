@@ -1,4 +1,4 @@
-package com.chainsys.pharmacyapp.companyDetails;
+package com.chainsys.pharmacyapp.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

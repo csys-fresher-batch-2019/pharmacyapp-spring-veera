@@ -1,17 +1,15 @@
-package com.chainsys.pharmacyapp.daoImplementation;
+package com.chainsys.pharmacyapp.dao.impl;
 //Test class
 
-import java.sql.Statement;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.Scanner;
 
-import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import org.springframework.stereotype.Repository;
+
 import com.chainsys.pharmacyapp.dao.CompanyDAO;
 import com.chainsys.pharmacyapp.model.CompanyModel;
-
+import com.chainsys.pharmacyapp.util.TestConnection;
+@Repository
 public class CompanyImplementation implements CompanyDAO {
 
 

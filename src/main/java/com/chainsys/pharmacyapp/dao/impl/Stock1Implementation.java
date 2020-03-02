@@ -1,16 +1,16 @@
-package com.chainsys.pharmacyapp.daoImplementation;
+package com.chainsys.pharmacyapp.dao.impl;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 
-import com.chainsys.pharmacyapp.companyDetails.TestConnection;
+import org.springframework.stereotype.Repository;
+
 import com.chainsys.pharmacyapp.dao.Stock1DAO;
 import com.chainsys.pharmacyapp.model.Stock1;
-
-import java.sql.SQLException;
-
+import com.chainsys.pharmacyapp.util.TestConnection;
+@Repository
 public class Stock1Implementation implements Stock1DAO {
 
 	public int addStockDetails(Stock1 s) throws Exception {
