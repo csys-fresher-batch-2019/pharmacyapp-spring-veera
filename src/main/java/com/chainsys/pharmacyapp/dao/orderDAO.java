@@ -5,6 +5,6 @@ import java.util.ArrayList;
 import com.chainsys.pharmacyapp.model.Order;
 
 public interface orderDAO {
-void addorderdetails(Order O)throws Exception;
-ArrayList displayOrderDetails() throws Exception;
+public void addorderdetails(Order O)throws Exception;
+public ArrayList displayOrderDetails() throws Exception;
 }

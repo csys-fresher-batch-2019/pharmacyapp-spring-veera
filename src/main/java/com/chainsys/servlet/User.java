@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chainsys.pharmacyapp.dao.impl.UserDAOImplementation;
+import com.chainsys.pharmacyapp.service.UserService;
 
 
 @WebServlet("/User")
@@ -23,7 +24,8 @@ public class User extends HttpServlet {
 		
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		UserDAOImplementation u = new UserDAOImplementation();
+	//	UserDAOImplementation u = new UserDAOImplementation();
+	UserService u=new UserService();	
 		String name = request.getParameter("name");
 		System.out.println(name);
 		String password = request.getParameter("password");

@@ -2,64 +2,71 @@ package com.chainsys.pharmacyapp.dao.impl;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.chainsys.pharmacyapp.Exception.DbException;
+import com.chainsys.pharmacyapp.Exception.InfoMessages;
 import com.chainsys.pharmacyapp.dao.SalesDAO;
 import com.chainsys.pharmacyapp.model.Sales;
 import com.chainsys.pharmacyapp.util.TestConnection;
 
-
 @Repository
 
 public class SalesImplementation implements SalesDAO {
-	public int addSalesDetails(Sales se)throws Exception
-	{
-		
-		String sql="insert into sales(sales_id,product_id,sales_date,sales_quantity,amount) values ("+se.getSalesId()+","+se.getProductId()+",SYSDATE,"+se.getSalesQuantity()+","+se.getAmount()+")";
-		Connection con = TestConnection.getConnection();
+	private static final Logger LOGGER = LoggerFactory.getLogger(SalesImplementation.class);
 
-		Statement stmt = con.createStatement();
-		int row = stmt.executeUpdate(sql);
-		//System.out.println(row);
-		
-	
-		return row;
-		
+	public int addSalesDetails(Sales se) throws Exception {
+
+		String sql = "insert into sales(sales_id,product_id,sales_date,sales_quantity,amount) values ("
+				+ se.getSalesId() + "," + se.getProductId() + ",SYSDATE," + se.getSalesQuantity() + "," + se.getAmount()
+				+ ")";
+		try (Connection con = TestConnection.getConnection(); Statement stmt = con.createStatement();) {
+			int row = stmt.executeUpdate(sql);
+			return row;
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+			throw new DbException(InfoMessages.CONNECTION);
+		}
+
 	}
 
 	public int amountCalAfterSales(int productId, int salesId) throws Exception {
-		// TODO Auto-generated method stub
-		String sql="Select cost from product where product_id="+productId+""; 
-			ResultSet rs;
-			Connection con = TestConnection.getConnection();
-			Statement stmt = con.createStatement();
-		    rs=stmt.executeQuery(sql);
-		    rs.next();
-		    
-	    int p1=rs.getInt(1);
-	    System.out.println(p1);
-	    String sql1="select sales_quantity from sales where sales_id="+salesId+"";
-	    System.out.println(sql1);
-        //ResultSet rs1;
-        int co =0;
-        Connection con1 = TestConnection.getConnection();
-		Statement stmt1 = con1.createStatement();
-		ResultSet rs1 = stmt1.executeQuery(sql1);
-		if(rs1.next()) {
-		co = rs1.getInt(1);
-		}
-		System.out.println(co);
-       int amount=p1*co;
-       System.out.println(amount);
-        String sql2="update sales set amount="+amount+" where sales_id= "+salesId+"";
-        Connection con2 = TestConnection.getConnection();
-		Statement stmt2 = con2.createStatement();
-		int row = stmt2.executeUpdate(sql2);
-	//System.out.println(sql2);
-		//System.out.println(row);
-		return row;
-	}
+		String sql = "Select cost from product where product_id=" + productId + "";
+		try (Connection con = TestConnection.getConnection(); 
+				Statement stmt = con.createStatement();) {
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
 
+			int p1 = rs.getInt(1);
+			System.out.println(p1);
+			String sql1 = "select sales_quantity from sales where sales_id=" + salesId + "";
+			LOGGER.info(sql1);
+			// ResultSet rs1;
+			int co = 0;
+			try (Connection con1 = TestConnection.getConnection(); Statement stmt1 = con1.createStatement();) {
+				ResultSet rs1 = stmt1.executeQuery(sql1);
+				if (rs1.next()) {
+					co = rs1.getInt(1);
+				}
+				LOGGER.info("co");
+				int amount = p1 * co;
+				LOGGER.info("amount");
+				String sql2 = "update sales set amount=" + amount + " where sales_id= " + salesId + "";
+				try (Connection con2 = TestConnection.getConnection(); Statement stmt2 = con2.createStatement();) {
+					int row = stmt2.executeUpdate(sql2);
+					return row;
+				}
+			}
+		}
+		catch (SQLException e2) {
+			e2.printStackTrace();
+			throw new DbException(InfoMessages.CONNECTION);
+		
+	}
+}
 }

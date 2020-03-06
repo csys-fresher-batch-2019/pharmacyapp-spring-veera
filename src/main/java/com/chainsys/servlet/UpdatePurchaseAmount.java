@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.pharmacyapp.dao.impl.PurchaseImplementation;
 import com.chainsys.pharmacyapp.model.Purchase;
+import com.chainsys.pharmacyapp.service.purchaseService;
 
 
 
@@ -24,8 +25,9 @@ public class UpdatePurchaseAmount extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		  int purchaseId=Integer.parseInt(request.getParameter("purchaseId"));
 		  int  productId=Integer.parseInt(request.getParameter("productId"));
-		PurchaseImplementation pm=new PurchaseImplementation();
-		Purchase c=new Purchase();
+		//PurchaseImplementation pm=new PurchaseImplementation();
+		purchaseService pm=new purchaseService();
+		  Purchase c=new Purchase();
 		c.setPurchaseId(purchaseId);
 		c.setProductId(productId);
 //		try {
@@ -36,7 +38,7 @@ public class UpdatePurchaseAmount extends HttpServlet {
 //		}
 //		
 		try {
-			int n=pm.amountCalculation(productId, purchaseId);;
+			int n=pm.amountCalculation(productId, purchaseId);
 		if(n==1)
 			{
 		

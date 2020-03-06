@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.pharmacyapp.dao.impl.CompanyImplementation;
 import com.chainsys.pharmacyapp.model.CompanyModel;
+import com.chainsys.pharmacyapp.service.companyService;
 
 @WebServlet("/CompanyDetails")
 
@@ -25,8 +26,9 @@ public class CompanyDetails extends HttpServlet {
 		String companyName=request.getParameter("companyName");
 		String companyType=request.getParameter("companyType");
 		String companyAddress=request.getParameter("companyAddress");
-       CompanyImplementation im=new CompanyImplementation() ;
-       CompanyModel m=new CompanyModel();
+      // CompanyImplementation im=new CompanyImplementation() ;
+      companyService im=new companyService();
+		CompanyModel m=new CompanyModel();
        m.setCompanyId(companyId);
        m.setCompanyName(companyName);
        m.setCompanyType(companyType);

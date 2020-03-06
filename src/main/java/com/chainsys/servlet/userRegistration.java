@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.pharmacyapp.dao.impl.UserDAOImplementation;
 import com.chainsys.pharmacyapp.model.UserDetails;
+import com.chainsys.pharmacyapp.service.UserService;
 
 @WebServlet("/userRegistration")
 
@@ -28,8 +29,9 @@ public class userRegistration extends HttpServlet {
 		String password=request.getParameter("password");
 		String contacts=request.getParameter("contact");
 		long contact = Long.parseLong(contacts);
-		UserDAOImplementation obj = new UserDAOImplementation();
-         UserDetails u=new UserDetails();	
+		//UserDAOImplementation obj = new UserDAOImplementation();
+         UserService obj=new UserService();
+		UserDetails u=new UserDetails();	
          u.setName(name);
          u.setEmailId(emailId);
          u.setPassword(password);

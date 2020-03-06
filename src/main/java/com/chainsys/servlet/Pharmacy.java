@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.pharmacyapp.dao.impl.UserDAOImplementation;
+import com.chainsys.pharmacyapp.service.UserService;
 @WebServlet("/Pharmacy")
 
 
@@ -18,8 +19,8 @@ public class Pharmacy extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		UserDAOImplementation obj = new UserDAOImplementation();
-		
+		//UserDAOImplementation obj = new UserDAOImplementation();
+		UserService obj=new UserService();
 		String name= request.getParameter("name");
 		String password = request.getParameter("password");
 

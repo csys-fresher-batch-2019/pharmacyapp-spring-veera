@@ -6,16 +6,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.sql.Date;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.chainsys.pharmacyapp.dao.impl.ProductImplementation;
 import com.chainsys.pharmacyapp.model.Product;
+import com.chainsys.pharmacyapp.service.productService;
 
 @WebServlet("/AddProductDetails")
 public class AddProductDetails extends HttpServlet {
@@ -31,8 +30,9 @@ public class AddProductDetails extends HttpServlet {
 			String dat = request.getParameter("expiryDate");
 			LocalDate date = java.time.LocalDate.parse(dat);
 	      
+			productService pi = new productService();
 			
-          ProductImplementation Pi=new ProductImplementation();
+//          ProductImplementation Pi=new ProductImplementation();
           Product p=new Product();
           p.setProductId(productId);
           p.setProductName(productName);
@@ -41,7 +41,7 @@ public class AddProductDetails extends HttpServlet {
           p.setQuantity(quantity);
           p.setExpiryDate(date);
           try {
-			int n=Pi.addProductDetails(p);
+			int n=pi.addProductDetails(p);
 			System.out.println(n);
 			if(n==1)
 			{

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.pharmacyapp.dao.impl.SalesImplementation;
 import com.chainsys.pharmacyapp.model.Sales;
+import com.chainsys.pharmacyapp.service.SalesService;
 
 
 @WebServlet("/AmountcalAftersales")
@@ -22,8 +23,9 @@ public class AmountcalAftersales extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		  int  productId=Integer.parseInt(request.getParameter("productId"));
 		  int  salesId=Integer.parseInt(request.getParameter("salesId"));
-		  SalesImplementation s=new SalesImplementation();
-          Sales l=new Sales();
+		  //SalesImplementation s=new SalesImplementation();
+      SalesService s=new SalesService();
+		  Sales l=new Sales();
           l.setProductId(productId);
           l.setSalesId(salesId);
          try {

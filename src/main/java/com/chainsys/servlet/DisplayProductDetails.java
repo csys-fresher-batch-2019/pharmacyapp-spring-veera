@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.pharmacyapp.dao.impl.ProductImplementation;
 import com.chainsys.pharmacyapp.model.Product;
+import com.chainsys.pharmacyapp.service.productService;
 @WebServlet("/DisplayProductDetails")
 
 public class DisplayProductDetails extends HttpServlet {
@@ -20,7 +21,8 @@ public class DisplayProductDetails extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int productId = Integer.parseInt(request.getParameter("productId"));
-		ProductImplementation p = new ProductImplementation();
+		//ProductImplementation p = new ProductImplementation();
+		productService p=new productService();
 		// pr.setProductId(productId);
 		ArrayList<Product> n = new ArrayList<Product>();
 		try {

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.pharmacyapp.dao.impl.ProductImplementation;
 import com.chainsys.pharmacyapp.model.Product;
+import com.chainsys.pharmacyapp.service.productService;
 
 @WebServlet("/ProductCartDetails")
 public class ProductCartDetails extends HttpServlet {
@@ -22,7 +23,8 @@ public class ProductCartDetails extends HttpServlet {
 		  int  productId=Integer.parseInt(request.getParameter("productId"));
 			
           ProductImplementation Pi=new ProductImplementation();
-          Product p=new Product();
+          //productService p=new productService();
+		  Product p=new Product();
           p.setProductId(productId);
           
 	}

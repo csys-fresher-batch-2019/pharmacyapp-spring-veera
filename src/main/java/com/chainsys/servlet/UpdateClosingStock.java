@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.pharmacyapp.dao.impl.Stock1Implementation;
 import com.chainsys.pharmacyapp.model.Stock1;
+import com.chainsys.pharmacyapp.service.Stock1Service;
 
 
 
@@ -21,8 +22,9 @@ public class UpdateClosingStock extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		  int  stockId=Integer.parseInt(request.getParameter("stockId"));
-		  Stock1Implementation nu=new Stock1Implementation();
-          Stock1 s=new Stock1();
+		 // Stock1Implementation nu=new Stock1Implementation();
+          Stock1Service nu=new Stock1Service();
+		  Stock1 s=new Stock1();
           s.setStockId(stockId);
           try {
 			int n=nu.updateClosingStock(s);

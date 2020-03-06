@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.chainsys.pharmacyapp.dao.impl.ProductImplementation;
 import com.chainsys.pharmacyapp.model.Product;
+import com.chainsys.pharmacyapp.service.productService;
 
 @WebServlet("/SelectProductId")
 
@@ -20,8 +21,9 @@ public class SelectProductId extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductImplementation p=new ProductImplementation();
-		  int  productId=Integer.parseInt(request.getParameter("productId"));
+	//	ProductImplementation p=new ProductImplementation();
+		productService p=new productService();
+		int  productId=Integer.parseInt(request.getParameter("productId"));
 		  try {
 			  
 			

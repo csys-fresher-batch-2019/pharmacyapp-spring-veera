@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.pharmacyapp.dao.impl.SalesImplementation;
 import com.chainsys.pharmacyapp.model.Sales;
+import com.chainsys.pharmacyapp.service.SalesService;
 
 
 @WebServlet("/AddSalesDetails")
@@ -24,8 +25,9 @@ public class AddSalesDetails extends HttpServlet {
 		 int productId=Integer.parseInt(request.getParameter("productId"));
 		 int salesQuantity=Integer.parseInt(request.getParameter("salesQuantity"));
 		 int Amount=Integer.parseInt(request.getParameter("Amount"));
-          SalesImplementation s=new SalesImplementation();
-          Sales l=new Sales();
+          //SalesImplementation s=new SalesImplementation();
+         SalesService s=new SalesService(); 
+		 Sales l=new Sales();
           l.setSalesId(salesId);
           l.setProductId(productId);
           l.setSalesQuantity(salesQuantity);

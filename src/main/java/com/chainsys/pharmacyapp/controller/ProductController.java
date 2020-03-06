@@ -21,14 +21,17 @@ public class ProductController {
 		ProductDAO obj = new ProductImplementation();
 		return obj.displayProduct();
 	}
-
 	
 	@PostMapping("/addProdutcDetails")
-	public int addProductDetails(@RequestParam("produtc_id") int productId,@RequestParam("product_name") String productName,@RequestParam("product_type") String productType,@RequestParam("cost") int cost) throws Exception
+	public int addProductDetails(@RequestParam("product_id") int productId,@RequestParam("product_name") String productName,@RequestParam("product_type") String productType,@RequestParam("cost") int cost) throws Exception
 	{
 		ProductDAO obj = new ProductImplementation();
-          
-		return  0;
+          Product p =new Product();
+          p.setProductId(productId);
+          p.setProductName(productName);
+          p.setProductType(productType);
+          p.setCost(cost);
+		return  obj.addProductDetails(p);
 		}
 //	@PostMapping("/AdminLogin")
 //	public boolean AdminLogin(@RequestParam("adminname") String Adminname,@RequestParam("Pass") String pass) throws Exception
