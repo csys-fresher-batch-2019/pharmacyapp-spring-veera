@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.pharmacyapp.dao.impl.PurchaseImplementation;
 import com.chainsys.pharmacyapp.model.Purchase;
-import com.chainsys.pharmacyapp.service.purchaseService;
+import com.chainsys.pharmacyapp.service.PurchaseService;
 
 @WebServlet("/UpdatePurchaseAmount")
 public class UpdatePurchaseAmount extends HttpServlet {
@@ -24,7 +23,7 @@ public class UpdatePurchaseAmount extends HttpServlet {
 		int purchaseId = Integer.parseInt(request.getParameter("purchaseId"));
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		// PurchaseImplementation pm=new PurchaseImplementation();
-		purchaseService pm = new purchaseService();
+		PurchaseService pm = new PurchaseService();
 		Purchase c = new Purchase();
 		c.setPurchaseId(purchaseId);
 		c.setProductId(productId);

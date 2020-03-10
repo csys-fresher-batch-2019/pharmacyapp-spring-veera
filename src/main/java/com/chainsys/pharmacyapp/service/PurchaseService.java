@@ -1,15 +1,15 @@
 package com.chainsys.pharmacyapp.service;
 
 import com.chainsys.pharmacyapp.dao.PurchaseDAO;
-import com.chainsys.pharmacyapp.dao.impl.PurchaseImplementation;
+import com.chainsys.pharmacyapp.dao.impl.PurchaseDAOImpl;
 import com.chainsys.pharmacyapp.model.Purchase;
 
-public class purchaseService {
-	PurchaseDAO pu = new PurchaseImplementation();
+public class PurchaseService {
+	PurchaseDAO pu = new PurchaseDAOImpl();
 
-	public int addPurchaseDetails(Purchase p) throws Exception {
+	public int save(Purchase p) throws Exception {
 
-		return pu.addPurchaseDetails(p);
+		return pu.save(p);
 	}
 
 	public int amountCalculation(int productId, int purchaseId) throws Exception {

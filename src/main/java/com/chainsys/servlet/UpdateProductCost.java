@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.pharmacyapp.dao.impl.ProductImplementation;
 import com.chainsys.pharmacyapp.model.Product;
-import com.chainsys.pharmacyapp.service.productService;
+import com.chainsys.pharmacyapp.service.ProductService;
 
 @WebServlet("/UpdateProductCost")
 
@@ -24,7 +23,7 @@ public class UpdateProductCost extends HttpServlet {
 
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		int productCost = Integer.parseInt(request.getParameter("productCost"));
-		productService Pi = new productService();
+		ProductService Pi = new ProductService();
 
 		// ProductImplementation Pi=new ProductImplementation();
 		Product p = new Product();

@@ -8,11 +8,11 @@
 
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
-			<%  
-HttpSession sese = request.getSession();
+			<%
+				HttpSession sese = request.getSession();
 
-  String name=(String)sese.getAttribute("name");
-%>
+				String Name = (String) sese.getAttribute("name");
+			%>
 			<div class="navbar-header">
 				<a class="navbar-brand" href="welcome.jsp">PharmacyApp</a>
 			</div>
@@ -21,7 +21,7 @@ HttpSession sese = request.getSession();
 			<ul class="nav navbar-nav navbar-right">
 
 				<li class="nav-item"><a class="navbar-brand" href="#"
-					data-target="#myModal">welcome <%=name %></a></li>
+					data-target="#myModal">welcome <%=Name%></a></li>
 			</ul>
 
 
@@ -46,8 +46,7 @@ HttpSession sese = request.getSession();
 
 		</br>
 		<h2>PharmacyAPP</h2>
-		</br>
-		</br> <a href="CompanyDetails.jsp"><button type="submit"
+		</br> </br> <a href="CompanyDetails.jsp"><button type="submit"
 				class="btn btn-primary btn-lg btn-block">Company Details</button></a></br> </br> <a
 			href="PurchaseMenu.jsp"><button type="submit"
 				class="btn btn-primary btn-lg btn-block">Purchase Details</button></a></br> </br>

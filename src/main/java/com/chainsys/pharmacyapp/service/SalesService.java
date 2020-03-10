@@ -1,16 +1,16 @@
 package com.chainsys.pharmacyapp.service;
 
 import com.chainsys.pharmacyapp.dao.SalesDAO;
-import com.chainsys.pharmacyapp.dao.impl.SalesImplementation;
+import com.chainsys.pharmacyapp.dao.impl.SalesDAOImpl;
 import com.chainsys.pharmacyapp.model.Sales;
 
 public class SalesService {
 
-	SalesDAO sa = new SalesImplementation();
+	SalesDAO sa = new SalesDAOImpl();
 
-	public int addSalesDetails(Sales se) throws Exception {
+	public int save(Sales se) throws Exception {
 
-		return sa.addSalesDetails(se);
+		return sa.save(se);
 
 	}
 

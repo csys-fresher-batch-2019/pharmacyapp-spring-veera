@@ -1,8 +1,6 @@
 package com.chainsys.pharmacyapp.model;
 
 import java.time.LocalDate;
-import java.util.Date;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;

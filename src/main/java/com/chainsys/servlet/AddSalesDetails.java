@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.pharmacyapp.dao.impl.SalesImplementation;
 import com.chainsys.pharmacyapp.model.Sales;
 import com.chainsys.pharmacyapp.service.SalesService;
 
@@ -32,7 +31,7 @@ public class AddSalesDetails extends HttpServlet {
 		l.setSalesQuantity(salesQuantity);
 		l.setAmount(Amount);
 		try {
-			int n = s.addSalesDetails(l);
+			int n = s.save(l);
 			if (n == 1) {
 				PrintWriter out = response.getWriter();
 				out.println("\n");

@@ -10,18 +10,17 @@ import org.springframework.stereotype.Repository;
 import com.chainsys.pharmacyapp.Exception.DbException;
 import com.chainsys.pharmacyapp.Exception.InfoMessages;
 import com.chainsys.pharmacyapp.dao.AdminDAO;
-import com.chainsys.pharmacyapp.util.TestConnection;
+import com.chainsys.pharmacyapp.util.ConnectionUtil;
 
 @Repository
 
-public class AdminDAOImplementation implements AdminDAO {
+public class AdminDAOImpl implements AdminDAO {
 
 	public boolean AdminLogin(String Adminname, String pass) throws Exception {
 		String sql = "select pass_word from AdminRegister where Admin_name=(select Admin_name from AdminRegister where Admin_name=?)";
-		try (Connection con = TestConnection.getConnection(); PreparedStatement stmt = con.prepareStatement(sql);) {
-			stmt.setString(1, Adminname);
-			ResultSet rs1 = stmt.executeQuery();
-
+		try (Connection con = ConnectionUtil.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setString(1, Adminname);
+			ResultSet rs1 = pst.executeQuery();
 			if (rs1.next()) {
 				String password = rs1.getString("pass_word");
 				if (pass.equals(password)) {
@@ -29,11 +28,9 @@ public class AdminDAOImplementation implements AdminDAO {
 				}
 
 			}
-		}
-
-		catch (SQLException e2) {
+		} catch (SQLException e2) {
 			e2.printStackTrace();
-			throw new DbException(InfoMessages.lOGIN);
+			throw new DbException(InfoMessages.INVALID_lOGIN);
 		}
 		return false;
 	}

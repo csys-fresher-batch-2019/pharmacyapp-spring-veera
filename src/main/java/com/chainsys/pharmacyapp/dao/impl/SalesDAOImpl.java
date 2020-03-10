@@ -14,21 +14,21 @@ import com.chainsys.pharmacyapp.Exception.DbException;
 import com.chainsys.pharmacyapp.Exception.InfoMessages;
 import com.chainsys.pharmacyapp.dao.SalesDAO;
 import com.chainsys.pharmacyapp.model.Sales;
-import com.chainsys.pharmacyapp.util.TestConnection;
+import com.chainsys.pharmacyapp.util.ConnectionUtil;
 
 @Repository
 
-public class SalesImplementation implements SalesDAO {
-	private static final Logger LOGGER = LoggerFactory.getLogger(SalesImplementation.class);
+public class SalesDAOImpl implements SalesDAO {
+	private static final Logger LOGGER = LoggerFactory.getLogger(SalesDAOImpl.class);
 
-	public int addSalesDetails(Sales se) throws Exception {
+	public int save(Sales se) throws Exception {
 //
 //		String sql = "insert into sales(sales_id,product_id,sales_date,sales_quantity,amount) values ("
 //				+ se.getSalesId() + "," + se.getProductId() + ",SYSDATE," + se.getSalesQuantity() + "," + se.getAmount()
 //				+ ")";
 
 		String sql = "insert into sales(sales_id,product_id,sales_date,sales_quantity,amount) values (?,?,SYSDATE,?,?)";
-		try (Connection con = TestConnection.getConnection(); PreparedStatement stmp = con.prepareStatement(sql);) {
+		try (Connection con = ConnectionUtil.getConnection(); PreparedStatement stmp = con.prepareStatement(sql);) {
 			stmp.setInt(1, se.getSalesId());
 			stmp.setInt(2, se.getProductId());
 			stmp.setInt(3, se.getSalesQuantity());
@@ -44,7 +44,7 @@ public class SalesImplementation implements SalesDAO {
 
 	public int amountCalAfterSales(int productId, int salesId) throws Exception {
 		String sql = "Select cost from product where product_id=" + productId + "";
-		try (Connection con = TestConnection.getConnection(); Statement stmt = con.createStatement();) {
+		try (Connection con = ConnectionUtil.getConnection(); Statement stmt = con.createStatement();) {
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
 
@@ -54,8 +54,8 @@ public class SalesImplementation implements SalesDAO {
 			LOGGER.info(sql1);
 			// ResultSet rs1;
 			int co = 0;
-			try (Connection con1 = TestConnection.getConnection(); Statement stmt1 = con1.createStatement();) {
-				ResultSet rs1 = stmt1.executeQuery(sql1);
+			try (Connection con1 = ConnectionUtil.getConnection(); Statement pst1 = con1.createStatement();) {
+				ResultSet rs1 = pst1.executeQuery(sql1);
 				if (rs1.next()) {
 					co = rs1.getInt(1);
 				}
@@ -63,8 +63,8 @@ public class SalesImplementation implements SalesDAO {
 				int amount = p1 * co;
 				LOGGER.info("amount");
 				String sql2 = "update sales set amount=" + amount + " where sales_id= " + salesId + "";
-				try (Connection con2 = TestConnection.getConnection(); Statement stmt2 = con2.createStatement();) {
-					int row = stmt2.executeUpdate(sql2);
+				try (Connection con2 = ConnectionUtil.getConnection(); Statement pst2 = con2.createStatement();) {
+					int row = pst2.executeUpdate(sql2);
 					return row;
 				}
 			}

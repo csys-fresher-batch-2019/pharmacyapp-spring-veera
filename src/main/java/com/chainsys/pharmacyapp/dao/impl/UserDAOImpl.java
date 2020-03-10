@@ -13,24 +13,24 @@ import com.chainsys.pharmacyapp.Exception.DbException;
 import com.chainsys.pharmacyapp.Exception.InfoMessages;
 import com.chainsys.pharmacyapp.dao.UserDAO;
 import com.chainsys.pharmacyapp.model.UserDetails;
-import com.chainsys.pharmacyapp.util.TestConnection;
+import com.chainsys.pharmacyapp.util.ConnectionUtil;
 
 @Repository
-public class UserDAOImplementation implements UserDAO {
+public class UserDAOImpl implements UserDAO {
 	static Scanner sc = new Scanner(System.in);
 
-	public int addUserDetails(UserDetails p) throws Exception {
+	public int save(UserDetails p) throws Exception {
 		String sql = "insert into UserRegister(name,Email_id,password,contact) values (?,?,?,?)";
-		try (Connection con = TestConnection.getConnection(); PreparedStatement stmp = con.prepareStatement(sql);) {
-			stmp.setString(1, p.getName());
-			stmp.setString(2, p.getEmailId());
-			stmp.setString(3, p.getPassword());
-			stmp.setLong(4, p.getContact());
-			int row = stmp.executeUpdate();
+		try (Connection con = ConnectionUtil.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setString(1, p.getName());
+			pst.setString(2, p.getEmailId());
+			pst.setString(3, p.getPassword());
+			pst.setLong(4, p.getContact());
+			int row = pst.executeUpdate();
 			return row;
 		} catch (SQLException e2) {
 			e2.printStackTrace();
-			throw new DbException(InfoMessages.lOGIN);
+			throw new DbException(InfoMessages.INVALID_lOGIN);
 		}
 	}
 
@@ -38,7 +38,7 @@ public class UserDAOImplementation implements UserDAO {
 
 		String sql = "select password from UserRegister where name=(select name from UserRegister where name='" + name
 				+ "')";
-		try (Connection con = TestConnection.getConnection(); Statement stmt = con.createStatement();) {
+		try (Connection con = ConnectionUtil.getConnection(); Statement stmt = con.createStatement();) {
 			ResultSet rs1 = stmt.executeQuery(sql);
 			if (rs1.next()) {
 				String pass = rs1.getString("password");
@@ -49,7 +49,7 @@ public class UserDAOImplementation implements UserDAO {
 			return false;
 		} catch (SQLException e2) {
 			e2.printStackTrace();
-			throw new DbException(InfoMessages.lOGIN);
+			throw new DbException(InfoMessages.INVALID_lOGIN);
 		}
 
 	}

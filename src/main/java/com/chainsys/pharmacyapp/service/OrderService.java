@@ -2,17 +2,15 @@ package com.chainsys.pharmacyapp.service;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.chainsys.pharmacyapp.dao.orderDAO;
-import com.chainsys.pharmacyapp.dao.impl.orderDAOImplementation;
+import com.chainsys.pharmacyapp.dao.OrderDAO;
+import com.chainsys.pharmacyapp.dao.impl.OrderDAOImpl;
 import com.chainsys.pharmacyapp.model.Order;
 
-public class orderService {
-	orderDAO o = new orderDAOImplementation();
+public class OrderService {
+	OrderDAO o = new OrderDAOImpl();
 
-	public void addorderdetails(Order O) throws Exception {
-		o.addorderdetails(O);
+	public void save(Order O) throws Exception {
+		o.save(O);
 	}
 
 	public ArrayList displayOrderDetails() throws Exception {

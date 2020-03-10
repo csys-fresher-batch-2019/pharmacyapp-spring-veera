@@ -6,7 +6,7 @@ import java.util.TimeZone;
 
 
 
-public class TestConnection {
+public class ConnectionUtil {
 
 	public static Connection getConnection() throws Exception {
 		//TimeZone.setDefault(TimeZone.getTimeZone("Asia/Kolkata"));

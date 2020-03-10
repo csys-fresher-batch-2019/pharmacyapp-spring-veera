@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.pharmacyapp.dao.impl.SalesImplementation;
 import com.chainsys.pharmacyapp.model.Sales;
 import com.chainsys.pharmacyapp.service.SalesService;
 

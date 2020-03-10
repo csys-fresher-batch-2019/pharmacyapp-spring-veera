@@ -180,10 +180,14 @@ opacity
 
 
 
+
+
 :
 
 
+
  
+
 
 
 1;
@@ -192,13 +196,19 @@ opacity
 
 
 
+
+
 :
+
 
 
  
 
 
+
 none
+
+
 
 
 
@@ -209,13 +219,19 @@ transform
 
 
 
+
+
 :
+
 
 
  
 
 
+
 none
+
+
 
 
 
@@ -237,10 +253,14 @@ opacity
 
 
 
+
+
 :
 
 
+
  
+
 
 
 1;
@@ -249,13 +269,19 @@ opacity
 
 
 
+
+
 :
+
 
 
  
 
 
+
 none
+
+
 
 
 
@@ -266,13 +292,19 @@ transform
 
 
 
+
+
 :
+
 
 
  
 
 
+
 none
+
+
 
 
 
@@ -380,7 +412,6 @@ to {
 </style>
 
 <!------ Include the above in your HEAD tag ---------->
-
 </head>
 <body>
 
@@ -397,8 +428,9 @@ to {
 			<h1>User Login</h1>
 
 			<form action="User" method="post">
-				<input type="text" id="login" class="fadeIn second" name="name"
-					placeholder="login"> <input type="text" id="password"
+				<input type="text" id="name" class="fadeIn second" name="name"
+					placeholder="login"> 
+					<input type="text" id="password"
 					class="fadeIn third" name="password" placeholder="password">
 				<input type="submit" class="fadeIn fourth" value="Log In">
 			</form>
@@ -412,4 +444,5 @@ to {
 	</div>
 
 </body>
+
 </html>

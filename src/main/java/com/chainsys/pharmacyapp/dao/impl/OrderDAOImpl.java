@@ -13,20 +13,20 @@ import org.springframework.stereotype.Repository;
 
 import com.chainsys.pharmacyapp.Exception.DbException;
 import com.chainsys.pharmacyapp.Exception.InfoMessages;
-import com.chainsys.pharmacyapp.dao.orderDAO;
+import com.chainsys.pharmacyapp.dao.OrderDAO;
 import com.chainsys.pharmacyapp.model.Order;
-import com.chainsys.pharmacyapp.util.TestConnection;
+import com.chainsys.pharmacyapp.util.ConnectionUtil;
 
 @Repository
 
-public class orderDAOImplementation implements orderDAO {
+public class OrderDAOImpl implements OrderDAO {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(orderDAOImplementation.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(OrderDAOImpl.class);
 
-	public void addorderdetails(Order O) throws Exception {
+	public void save(Order O) throws Exception {
 
 		String sql = "insert into orderdetail(order_id,user_name,product_name,product_id,quantity,Email_id,contact)  values(order_id.nextval,?,?,?,?,?,?)";
-		try (Connection con = TestConnection.getConnection(); PreparedStatement stmp = con.prepareStatement(sql);) {
+		try (Connection con = ConnectionUtil.getConnection(); PreparedStatement stmp = con.prepareStatement(sql);) {
 			stmp.setString(1, O.getUserName());
 			stmp.setString(2, O.getProductName());
 			stmp.setInt(3, O.getProductId());
@@ -35,14 +35,14 @@ public class orderDAOImplementation implements orderDAO {
 			stmp.setLong(6, O.getContact());
 			stmp.executeUpdate();
 		} catch (SQLException e2) {
-			throw new DbException(InfoMessages.ORDER);
+			throw new DbException(InfoMessages.INVALID_ORDER);
 		}
 	}
 
 	public ArrayList<Order> displayOrderDetails() throws Exception {
 		String sql = "select * from orderdetail";
-		try (Connection con = TestConnection.getConnection(); Statement stmt = con.createStatement();) {
-			try (ResultSet rs = stmt.executeQuery(sql);) {
+		try (Connection con = ConnectionUtil.getConnection(); Statement pst = con.createStatement();) {
+			try (ResultSet rs = pst.executeQuery(sql);) {
 				rs.next();
 
 				ArrayList<Order> out = new ArrayList<Order>();
@@ -64,12 +64,12 @@ public class orderDAOImplementation implements orderDAO {
 				}
 				return out;
 
-			} catch (SQLException e2) {
-				throw new DbException(InfoMessages.CONNECTION);
-
 			} catch (Exception e3) {
-				throw new DbException(InfoMessages.ORDERDISPLAY);
+				throw new DbException(InfoMessages.INVALID_ORDERDISPLAY);
 			}
+
+		} catch (SQLException e2) {
+			throw new DbException(InfoMessages.CONNECTION);
 
 		}
 	}

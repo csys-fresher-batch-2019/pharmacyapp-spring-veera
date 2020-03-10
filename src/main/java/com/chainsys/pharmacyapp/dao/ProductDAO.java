@@ -7,7 +7,7 @@ import com.chainsys.pharmacyapp.model.Product;
 //write methods using table name
 public interface ProductDAO {
 
-	public int addProductDetails(Product p) throws Exception;
+	public int save(Product p) throws Exception;
 
 	public int updateProductType(int productId, String productType) throws Exception;
 

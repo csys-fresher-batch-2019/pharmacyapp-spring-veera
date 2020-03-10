@@ -1,11 +1,11 @@
 package com.chainsys.pharmacyapp.service;
 
 import com.chainsys.pharmacyapp.dao.AdminDAO;
-import com.chainsys.pharmacyapp.dao.impl.AdminDAOImplementation;
+import com.chainsys.pharmacyapp.dao.impl.AdminDAOImpl;
 
-public class adminService {
+public class AdminService {
 
-	AdminDAO ad = new AdminDAOImplementation();
+	AdminDAO ad = new AdminDAOImpl();
 
 	public boolean AdminLogin(String Adminname, String pass) throws Exception {
 

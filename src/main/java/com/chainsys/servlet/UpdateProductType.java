@@ -3,16 +3,14 @@ package com.chainsys.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.pharmacyapp.dao.impl.ProductImplementation;
 import com.chainsys.pharmacyapp.model.Product;
-import com.chainsys.pharmacyapp.service.productService;
+import com.chainsys.pharmacyapp.service.ProductService;
 
 @WebServlet("/UpdateProductType")
 
@@ -24,7 +22,7 @@ public class UpdateProductType extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		String productType = request.getParameter("productType");
-		productService Pi = new productService();
+		ProductService Pi = new ProductService();
 		// ProductImplementation Pi=new ProductImplementation();
 		Product p = new Product();
 		p.setProductId(productId);

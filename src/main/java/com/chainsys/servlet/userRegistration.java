@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.pharmacyapp.dao.impl.UserDAOImplementation;
 import com.chainsys.pharmacyapp.model.UserDetails;
 import com.chainsys.pharmacyapp.service.UserService;
 
@@ -21,7 +20,6 @@ public class userRegistration extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		String name = request.getParameter("name");
 		String emailId = request.getParameter("emailId");
@@ -36,7 +34,7 @@ public class userRegistration extends HttpServlet {
 		u.setPassword(password);
 		u.setContact(contact);
 		try {
-			int n = obj.addUserDetails(u);
+			int n = obj.save(u);
 			if (n == 1) {
 				RequestDispatcher d = request.getRequestDispatcher(".jsp");
 				d.forward(request, response);

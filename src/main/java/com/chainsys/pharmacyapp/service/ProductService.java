@@ -2,18 +2,16 @@ package com.chainsys.pharmacyapp.service;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.chainsys.pharmacyapp.dao.ProductDAO;
-import com.chainsys.pharmacyapp.dao.impl.ProductImplementation;
+import com.chainsys.pharmacyapp.dao.impl.ProductDAOImpl;
 import com.chainsys.pharmacyapp.model.Product;
 
-public class productService {
+public class ProductService {
 
-	ProductDAO pa = new ProductImplementation();
+	ProductDAO pa = new ProductDAOImpl();
 
-	public int addProductDetails(Product p) throws Exception {
-		return pa.addProductDetails(p);
+	public int save(Product p) throws Exception {
+		return pa.save(p);
 
 	}
 

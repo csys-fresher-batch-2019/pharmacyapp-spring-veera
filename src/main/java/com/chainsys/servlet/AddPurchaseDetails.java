@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.pharmacyapp.model.Purchase;
-import com.chainsys.pharmacyapp.service.purchaseService;
+import com.chainsys.pharmacyapp.service.PurchaseService;
 
 @WebServlet("/AddPurchaseDetails")
 
@@ -25,7 +25,7 @@ public class AddPurchaseDetails extends HttpServlet {
 		int companyId = Integer.parseInt(request.getParameter("companyId"));
 		int purchaseQuantity = Integer.parseInt(request.getParameter("purchaseQuantity"));
 		int Amount = Integer.parseInt(request.getParameter("Amount"));
-		purchaseService p = new purchaseService();
+		PurchaseService p = new PurchaseService();
 		// PurchaseImplementation p=new PurchaseImplementation();
 		Purchase Pu = new Purchase();
 		Pu.setProductId(productId);
@@ -33,7 +33,7 @@ public class AddPurchaseDetails extends HttpServlet {
 		Pu.setPurchaseQuantity(purchaseQuantity);
 		Pu.setAmount(Amount);
 		try {
-			int n = p.addPurchaseDetails(Pu);
+			int n = p.save(Pu);
 			System.out.println(n);
 			if (n == 1) {
 

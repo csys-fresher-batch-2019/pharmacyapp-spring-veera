@@ -11,9 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.chainsys.pharmacyapp.dao.impl.ProductImplementation;
 import com.chainsys.pharmacyapp.model.Product;
-import com.chainsys.pharmacyapp.service.productService;
+import com.chainsys.pharmacyapp.service.ProductService;
 
 @WebServlet("/SelectProductId")
 
@@ -23,7 +22,7 @@ public class SelectProductId extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// ProductImplementation p=new ProductImplementation();
-		productService p = new productService();
+		ProductService p = new ProductService();
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		try {
 

@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.pharmacyapp.dao.impl.ProductImplementation;
 import com.chainsys.pharmacyapp.model.Product;
-import com.chainsys.pharmacyapp.service.productService;
+import com.chainsys.pharmacyapp.service.ProductService;
 
 @WebServlet("/DisplayProductDetails")
 
@@ -23,7 +22,7 @@ public class DisplayProductDetails extends HttpServlet {
 			throws ServletException, IOException {
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		// ProductImplementation p = new ProductImplementation();
-		productService p = new productService();
+		ProductService p = new ProductService();
 		// pr.setProductId(productId);
 		ArrayList<Product> n = new ArrayList<Product>();
 		try {

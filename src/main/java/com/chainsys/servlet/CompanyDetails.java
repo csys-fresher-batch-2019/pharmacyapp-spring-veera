@@ -3,16 +3,14 @@ package com.chainsys.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.pharmacyapp.dao.impl.CompanyImplementation;
 import com.chainsys.pharmacyapp.model.CompanyModel;
-import com.chainsys.pharmacyapp.service.companyService;
+import com.chainsys.pharmacyapp.service.CompanyService;
 
 @WebServlet("/CompanyDetails")
 
@@ -27,14 +25,14 @@ public class CompanyDetails extends HttpServlet {
 		String companyType = request.getParameter("companyType");
 		String companyAddress = request.getParameter("companyAddress");
 		// CompanyImplementation im=new CompanyImplementation() ;
-		companyService im = new companyService();
+		CompanyService im = new CompanyService();
 		CompanyModel m = new CompanyModel();
 		m.setCompanyId(companyId);
 		m.setCompanyName(companyName);
 		m.setCompanyType(companyType);
 		m.setCompanyAddress(companyAddress);
 		try {
-			int n = im.addCompanyDetails(m);
+			int n = im.save(m);
 			System.out.println(n);
 			if (n == 1) {
 				PrintWriter out = response.getWriter();

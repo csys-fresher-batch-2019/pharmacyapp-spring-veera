@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.chainsys.pharmacyapp.dao.AdminDAO;
-import com.chainsys.pharmacyapp.dao.impl.AdminDAOImplementation;
-import com.chainsys.pharmacyapp.service.adminService;
+import com.chainsys.pharmacyapp.service.AdminService;
 
 @WebServlet("/Admin")
 
@@ -21,7 +19,7 @@ public class Admin extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		adminService com = new adminService();
+		AdminService com = new AdminService();
 		// AdminDAO com = new AdminDAOImplementation();
 		String name = request.getParameter("name");
 		System.out.println(name);
