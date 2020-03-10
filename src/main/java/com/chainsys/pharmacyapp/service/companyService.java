@@ -7,12 +7,12 @@ import com.chainsys.pharmacyapp.dao.impl.CompanyImplementation;
 import com.chainsys.pharmacyapp.model.CompanyModel;
 
 public class companyService {
-	
-	CompanyDAO co=new CompanyImplementation();
-public 	int addCompanyDetails(CompanyModel p)throws Exception
-	{
+
+	CompanyDAO co = new CompanyImplementation();
+
+	public int addCompanyDetails(CompanyModel p) throws Exception {
 		return co.addCompanyDetails(p);
-		
+
 	}
-	
+
 }

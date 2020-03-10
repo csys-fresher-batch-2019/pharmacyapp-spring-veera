@@ -24,25 +24,25 @@ public class ProductImplementation implements ProductDAO {
 	public int addProductDetails(Product p) throws Exception {
 		// Date date = Date.valueOf(p.getExpiryDate());
 		java.sql.Date date = java.sql.Date.valueOf(p.getExpiryDate());
+		// String sql = "insert into
+		// product(product_id,product_name,product_type,cost,quantity,expiry_date) " +
+		// "values("
+		// + p.getProductId() + ",'" + p.getProductName() + "','" + p.getProductType() +
+		// "','" + p.getCost()
+		// + "','" + p.getQuantity() + "',to_date('" + date + "','yyyy-MM-DD'))";
 		String sql = "insert into product(product_id,product_name,product_type,cost,quantity,expiry_date) " + "values("
 				+ p.getProductId() + ",'" + p.getProductName() + "','" + p.getProductType() + "','" + p.getCost()
 				+ "','" + p.getQuantity() + "',to_date('" + date + "','yyyy-MM-DD'))";
-		try(Connection c1 = TestConnection.getConnection();
-		Statement stmt = c1.createStatement();)
-		{
-		int row = stmt.executeUpdate(sql);
-		LOGGER.info("row");
-		return row;
-		}catch (SQLException e2) {
+		try (Connection c1 = TestConnection.getConnection(); Statement stmt = c1.createStatement();) {
+			int row = stmt.executeUpdate(sql);
+			LOGGER.info("row");
+			return row;
+		} catch (SQLException e2) {
 			throw new DbException(InfoMessages.ADDPRODUCT);
 		}
-
-		
-
 	}
 
 	public int updateProductType(int pId, String pT) throws Exception {
-		// TODO Auto-generated method stub
 		String sql = "update product set product_type=? where product_id=?";
 		try (Connection con = TestConnection.getConnection(); PreparedStatement stmp = con.prepareStatement(sql);) {
 			stmp.setString(1, pT);
@@ -131,6 +131,3 @@ public class ProductImplementation implements ProductDAO {
 		}
 	}
 }
-
-		
-		

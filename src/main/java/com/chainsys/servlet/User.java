@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import com.chainsys.pharmacyapp.dao.impl.UserDAOImplementation;
 import com.chainsys.pharmacyapp.service.UserService;
 
-
 @WebServlet("/User")
 
 public class User extends HttpServlet {
@@ -21,21 +20,20 @@ public class User extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-	//	UserDAOImplementation u = new UserDAOImplementation();
-	UserService u=new UserService();	
+		// UserDAOImplementation u = new UserDAOImplementation();
+		UserService u = new UserService();
 		String name = request.getParameter("name");
 		System.out.println(name);
 		String password = request.getParameter("password");
 		System.out.println(password);
-		System.out.println(name +"  " + password);
+		System.out.println(name + "  " + password);
 		try {
-		
-			boolean res=u.user(name, password);
+
+			boolean res = u.user(name, password);
 			System.out.println(res);
-			if (res==true) {
+			if (res == true) {
 				HttpSession ses = request.getSession();
 				RequestDispatcher d = request.getRequestDispatcher("DisplayProductDetails.jsp");
 				d.forward(request, response);
@@ -46,7 +44,7 @@ public class User extends HttpServlet {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 		}
 	}
 

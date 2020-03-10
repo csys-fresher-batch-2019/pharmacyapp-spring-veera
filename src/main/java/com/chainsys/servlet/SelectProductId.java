@@ -19,15 +19,15 @@ import com.chainsys.pharmacyapp.service.productService;
 
 public class SelectProductId extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	//	ProductImplementation p=new ProductImplementation();
-		productService p=new productService();
-		int  productId=Integer.parseInt(request.getParameter("productId"));
-		  try {
-			  
-			
-			ArrayList<Product> val=p.selectProductId(productId);
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// ProductImplementation p=new ProductImplementation();
+		productService p = new productService();
+		int productId = Integer.parseInt(request.getParameter("productId"));
+		try {
+
+			ArrayList<Product> val = p.selectProductId(productId);
 			request.setAttribute("Pro", val);
 			HttpSession ses = request.getSession();
 			ses.setAttribute("Prod", productId);
@@ -40,6 +40,5 @@ public class SelectProductId extends HttpServlet {
 		}
 
 	}
-
 
 }

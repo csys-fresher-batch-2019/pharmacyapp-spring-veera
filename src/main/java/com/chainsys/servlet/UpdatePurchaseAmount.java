@@ -14,47 +14,44 @@ import com.chainsys.pharmacyapp.dao.impl.PurchaseImplementation;
 import com.chainsys.pharmacyapp.model.Purchase;
 import com.chainsys.pharmacyapp.service.purchaseService;
 
-
-
 @WebServlet("/UpdatePurchaseAmount")
 public class UpdatePurchaseAmount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		  int purchaseId=Integer.parseInt(request.getParameter("purchaseId"));
-		  int  productId=Integer.parseInt(request.getParameter("productId"));
-		//PurchaseImplementation pm=new PurchaseImplementation();
-		purchaseService pm=new purchaseService();
-		  Purchase c=new Purchase();
+		int purchaseId = Integer.parseInt(request.getParameter("purchaseId"));
+		int productId = Integer.parseInt(request.getParameter("productId"));
+		// PurchaseImplementation pm=new PurchaseImplementation();
+		purchaseService pm = new purchaseService();
+		Purchase c = new Purchase();
 		c.setPurchaseId(purchaseId);
 		c.setProductId(productId);
-//		try {
-//			docs.adddoctor(doc);
-//			request.setAttribute("infoMessage", "Amount Updated ");
-//		} catch (Dbexception e) {
-//			request.setAttribute("errorMessage", "Amount Updated ");
-//		}
-//		
+		// try {
+		// docs.adddoctor(doc);
+		// request.setAttribute("infoMessage", "Amount Updated ");
+		// } catch (Dbexception e) {
+		// request.setAttribute("errorMessage", "Amount Updated ");
+		// }
+		//
 		try {
-			int n=pm.amountCalculation(productId, purchaseId);
-		if(n==1)
-			{
-		
-				PrintWriter out = response.getWriter();
-		   		 out.println("\n");
-		request.setAttribute("infoMessage", "Amount Updated ");
+			int n = pm.amountCalculation(productId, purchaseId);
+			if (n == 1) {
 
-//		   			out.println("\n<h1>Amount Updated </h1>");
-		}
-		
-	} catch (Exception e) {
-		request.setAttribute("errorMessage", "Amount Updated ");
+				PrintWriter out = response.getWriter();
+				out.println("\n");
+				request.setAttribute("infoMessage", "Amount Updated ");
+
+				// out.println("\n<h1>Amount Updated </h1>");
+			}
+
+		} catch (Exception e) {
+			request.setAttribute("errorMessage", "Amount Updated ");
 			e.printStackTrace();
 		}
-	
-	RequestDispatcher d = request.getRequestDispatcher("UpdatePurchaseAmount.jsp");
-	d.forward(request, response);
+
+		RequestDispatcher d = request.getRequestDispatcher("UpdatePurchaseAmount.jsp");
+		d.forward(request, response);
 	}
 }

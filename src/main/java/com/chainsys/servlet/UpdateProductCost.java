@@ -13,44 +13,40 @@ import com.chainsys.pharmacyapp.dao.impl.ProductImplementation;
 import com.chainsys.pharmacyapp.model.Product;
 import com.chainsys.pharmacyapp.service.productService;
 
-
-
 @WebServlet("/UpdateProductCost")
 
 public class UpdateProductCost extends HttpServlet {
-	private static final long serialVersionUID = 1L;   
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	
-		  int  productId=Integer.parseInt(request.getParameter("productId"));
-		  int productCost=Integer.parseInt(request.getParameter("productCost"));
-		     productService Pi=new productService();
+	private static final long serialVersionUID = 1L;
 
-//		  ProductImplementation Pi=new ProductImplementation();
-          Product p=new Product();
-          p.setProductId(productId);
-          p.setCost(productCost);
-         try {
-			int n=Pi.updateCost(productId, productCost);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		int productId = Integer.parseInt(request.getParameter("productId"));
+		int productCost = Integer.parseInt(request.getParameter("productCost"));
+		productService Pi = new productService();
+
+		// ProductImplementation Pi=new ProductImplementation();
+		Product p = new Product();
+		p.setProductId(productId);
+		p.setCost(productCost);
+		try {
+			int n = Pi.updateCost(productId, productCost);
 			System.out.println(n);
-			if(n==1)
-			{
+			if (n == 1) {
 				PrintWriter out = response.getWriter();
-	   		 out.println("\n");
-	   			out.println("\n<h1>ProductCost Updated </h1>");
-				
-			}
-			else
-			{
+				out.println("\n");
+				out.println("\n<h1>ProductCost Updated </h1>");
+
+			} else {
 				PrintWriter out = response.getWriter();
-		   		 out.println("\n");
-		   			out.println("\n<h1>ProductCost not Updated </h1>");
+				out.println("\n");
+				out.println("\n<h1>ProductCost not Updated </h1>");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
 
 }

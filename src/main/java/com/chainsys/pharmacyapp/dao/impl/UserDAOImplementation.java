@@ -19,8 +19,7 @@ import com.chainsys.pharmacyapp.util.TestConnection;
 public class UserDAOImplementation implements UserDAO {
 	static Scanner sc = new Scanner(System.in);
 
-	public int addUserDetails(UserDetails p) throws Exception
-	{
+	public int addUserDetails(UserDetails p) throws Exception {
 		String sql = "insert into UserRegister(name,Email_id,password,contact) values (?,?,?,?)";
 		try (Connection con = TestConnection.getConnection(); PreparedStatement stmp = con.prepareStatement(sql);) {
 			stmp.setString(1, p.getName());
@@ -43,7 +42,6 @@ public class UserDAOImplementation implements UserDAO {
 			ResultSet rs1 = stmt.executeQuery(sql);
 			if (rs1.next()) {
 				String pass = rs1.getString("password");
-				// System.out.println(pass);
 				if (password.equals(pass)) {
 					return true;
 				}

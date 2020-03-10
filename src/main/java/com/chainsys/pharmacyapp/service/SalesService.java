@@ -6,17 +6,17 @@ import com.chainsys.pharmacyapp.model.Sales;
 
 public class SalesService {
 
-SalesDAO sa=new SalesImplementation();	
-	public int addSalesDetails(Sales se)throws Exception
-	{
-		
+	SalesDAO sa = new SalesImplementation();
+
+	public int addSalesDetails(Sales se) throws Exception {
+
 		return sa.addSalesDetails(se);
-		
+
 	}
-	public int amountCalAfterSales(int productId,int salesId) throws Exception
-	{
-	return sa.amountCalAfterSales(productId, salesId);
-		
+
+	public int amountCalAfterSales(int productId, int salesId) throws Exception {
+		return sa.amountCalAfterSales(productId, salesId);
+
 	}
-	
+
 }

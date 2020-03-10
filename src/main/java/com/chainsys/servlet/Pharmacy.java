@@ -10,18 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.pharmacyapp.dao.impl.UserDAOImplementation;
 import com.chainsys.pharmacyapp.service.UserService;
-@WebServlet("/Pharmacy")
 
+@WebServlet("/Pharmacy")
 
 public class Pharmacy extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//UserDAOImplementation obj = new UserDAOImplementation();
-		UserService obj=new UserService();
-		String name= request.getParameter("name");
+		// UserDAOImplementation obj = new UserDAOImplementation();
+		UserService obj = new UserService();
+		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 
 		System.out.println(name + "-" + password);
@@ -32,7 +32,5 @@ public class Pharmacy extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
-	
 
 }

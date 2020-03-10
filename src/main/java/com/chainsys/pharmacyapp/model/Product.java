@@ -7,7 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-/**TestModel
+/**
+ * TestModel
  * 
  * @author veer2379
  *
@@ -23,13 +24,11 @@ public class Product {
 	private int cost;
 	private int quantity;
 	private LocalDate expiryDate;
-@Override
+
+	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productType=" + productType
-				+ ", cost=" + cost + ", Quantity ="+quantity+", expiryDate=" + expiryDate + "]";
+				+ ", cost=" + cost + ", Quantity =" + quantity + ", expiryDate=" + expiryDate + "]";
 	}
 
-
 }
-
-

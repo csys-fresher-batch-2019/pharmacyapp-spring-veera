@@ -14,42 +14,38 @@ import com.chainsys.pharmacyapp.dao.impl.ProductImplementation;
 import com.chainsys.pharmacyapp.model.Product;
 import com.chainsys.pharmacyapp.service.productService;
 
-
 @WebServlet("/UpdateProductType")
 
 public class UpdateProductType extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		  int  productId=Integer.parseInt(request.getParameter("productId"));
-		  String productType=request.getParameter("productType");
-     productService Pi=new productService();
-		  //     ProductImplementation Pi=new ProductImplementation();
-          Product p=new Product();
-          p.setProductId(productId);
-          p.setProductType(productType);
-         try {
-			int n=Pi.updateProductType(productId,productType);
-		     System.out.println(n);
-		     if(n==1)
-		     {
-//		    	 
-		 		PrintWriter out = response.getWriter();
-		   		 out.println("\n");
-		   			out.println("\n<h1>ProductType Updated </h1>");
-		     }
-		     else
-		     {
-		 		PrintWriter out = response.getWriter();
-		   		 out.println("\n");
-		   			out.println("\n<h1>ProductType cannot be Updated </h1>");
-		     }
-         } catch (Exception e) {
+		int productId = Integer.parseInt(request.getParameter("productId"));
+		String productType = request.getParameter("productType");
+		productService Pi = new productService();
+		// ProductImplementation Pi=new ProductImplementation();
+		Product p = new Product();
+		p.setProductId(productId);
+		p.setProductType(productType);
+		try {
+			int n = Pi.updateProductType(productId, productType);
+			System.out.println(n);
+			if (n == 1) {
+				//
+				PrintWriter out = response.getWriter();
+				out.println("\n");
+				out.println("\n<h1>ProductType Updated </h1>");
+			} else {
+				PrintWriter out = response.getWriter();
+				out.println("\n");
+				out.println("\n<h1>ProductType cannot be Updated </h1>");
+			}
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	
 }

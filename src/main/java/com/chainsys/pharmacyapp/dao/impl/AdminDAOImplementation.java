@@ -21,14 +21,15 @@ public class AdminDAOImplementation implements AdminDAO {
 		try (Connection con = TestConnection.getConnection(); PreparedStatement stmt = con.prepareStatement(sql);) {
 			stmt.setString(1, Adminname);
 			ResultSet rs1 = stmt.executeQuery();
-				
-				if (rs1.next()) {
-					String password = rs1.getString("pass_word");
-					if (pass.equals(password)) {
-						return true;
+
+			if (rs1.next()) {
+				String password = rs1.getString("pass_word");
+				if (pass.equals(password)) {
+					return true;
 				}
-				
-				}}
+
+			}
+		}
 
 		catch (SQLException e2) {
 			e2.printStackTrace();

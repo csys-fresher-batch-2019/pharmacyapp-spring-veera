@@ -21,24 +21,26 @@ public class PurchaseImplementation implements PurchaseDAO {
 	private static final Logger LOGGER = LoggerFactory.getLogger(PurchaseImplementation.class);
 
 	public int addPurchaseDetails(Purchase p) throws Exception {
-		String sql = "insert into purchase(purchase_id,product_id,purchase_date,company_id,purchase_quantity,amount) values(purchase_id.nextval,"
-				+ p.getProductId() + ",SYSDATE," + p.getCompanyId() + "," + p.getPurchaseQuantity() + ","
-				+ p.getAmount() + ")";
-		try (Connection con = TestConnection.getConnection(); Statement stmt = con.createStatement();) {
-			int row = stmt.executeUpdate(sql);
-			LOGGER.info("row");
+
+		String sql = "insert into purchase(purchase_id,product_id,purchase_date,company_id,purchase_quantity,amount) values(purchase_id.nextval,?,SYSDATE,?,?,?)";
+		try (Connection con = TestConnection.getConnection(); PreparedStatement stmp = con.prepareStatement(sql);) {
+			stmp.setInt(1, p.getProductId());
+			stmp.setInt(2, p.getCompanyId());
+			stmp.setInt(3, p.getPurchaseQuantity());
+			stmp.setInt(4, p.getAmount());
+			int row = stmp.executeUpdate();
+
+			LOGGER.info("sql");
 			return row;
 		} catch (SQLException e2) {
 			e2.printStackTrace();
-
 			throw new DbException(InfoMessages.PURCHASE);
 		}
 	}
 
 	public int amountCalculation(int productId, int purchaseId) throws Exception {
 		String sql = "select purchase_quantity from purchase where purchase_id = ?";
-		try (Connection con = TestConnection.getConnection(); 
-				PreparedStatement stmt = con.prepareStatement(sql);) {
+		try (Connection con = TestConnection.getConnection(); PreparedStatement stmt = con.prepareStatement(sql);) {
 			stmt.setInt(1, productId);
 
 			int quantity = 0, co = 0;
@@ -49,7 +51,8 @@ public class PurchaseImplementation implements PurchaseDAO {
 				LOGGER.info("quantity");
 			}
 			String sql1 = "select cost from product where product_id = ?";
-			try (Connection con1 = TestConnection.getConnection(); PreparedStatement stmt1 = con.prepareStatement(sql1);) {
+			try (Connection con1 = TestConnection.getConnection();
+					PreparedStatement stmt1 = con.prepareStatement(sql1);) {
 				stmt1.setInt(1, productId);
 				ResultSet rs1 = stmt1.executeQuery();
 				if (rs1.next()) {
@@ -60,7 +63,8 @@ public class PurchaseImplementation implements PurchaseDAO {
 
 				int amount = co * quantity;
 				String sql2 = "update purchase set amount = ? where purchase_id = ?";
-				try (Connection con2 = TestConnection.getConnection();  PreparedStatement stmt2 = con.prepareStatement(sql2);) {
+				try (Connection con2 = TestConnection.getConnection();
+						PreparedStatement stmt2 = con.prepareStatement(sql2);) {
 					stmt2.setInt(1, amount);
 					stmt2.setInt(2, purchaseId);
 					int row = stmt2.executeUpdate();

@@ -18,43 +18,37 @@ import com.chainsys.pharmacyapp.service.UserService;
 
 public class userRegistration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		String name=request.getParameter("name");
-		String emailId=request.getParameter("emailId");
-		String password=request.getParameter("password");
-		String contacts=request.getParameter("contact");
+
+		String name = request.getParameter("name");
+		String emailId = request.getParameter("emailId");
+		String password = request.getParameter("password");
+		String contacts = request.getParameter("contact");
 		long contact = Long.parseLong(contacts);
-		//UserDAOImplementation obj = new UserDAOImplementation();
-         UserService obj=new UserService();
-		UserDetails u=new UserDetails();	
-         u.setName(name);
-         u.setEmailId(emailId);
-         u.setPassword(password);
-         u.setContact(contact);
+		// UserDAOImplementation obj = new UserDAOImplementation();
+		UserService obj = new UserService();
+		UserDetails u = new UserDetails();
+		u.setName(name);
+		u.setEmailId(emailId);
+		u.setPassword(password);
+		u.setContact(contact);
 		try {
-		int  n=obj.addUserDetails(u);
-		if(n==1)
-		{
-			RequestDispatcher d = request.getRequestDispatcher(".jsp");
-			d.forward(request, response);
-		}else
-		{
-			PrintWriter out = response.getWriter();
-	   		 out.println("\n");
-	   			out.println("\n<h1>User Already Exist</h1>"); 
-		}
+			int n = obj.addUserDetails(u);
+			if (n == 1) {
+				RequestDispatcher d = request.getRequestDispatcher(".jsp");
+				d.forward(request, response);
+			} else {
+				PrintWriter out = response.getWriter();
+				out.println("\n");
+				out.println("\n<h1>User Already Exist</h1>");
+			}
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 	}
 
-	
-
 }
-

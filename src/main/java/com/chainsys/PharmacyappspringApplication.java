@@ -7,13 +7,14 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-@SpringBootApplication(exclude=DataSourceAutoConfiguration.class)
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 @ServletComponentScan("com.chainsys.servlet")
-public class PharmacyappspringApplication extends SpringBootServletInitializer  {
+public class PharmacyappspringApplication extends SpringBootServletInitializer {
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-	   return application.sources(PharmacyappspringApplication.class);
+		return application.sources(PharmacyappspringApplication.class);
 	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(PharmacyappspringApplication.class, args);
 	}

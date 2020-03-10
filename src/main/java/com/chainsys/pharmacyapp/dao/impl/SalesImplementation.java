@@ -1,6 +1,7 @@
 package com.chainsys.pharmacyapp.dao.impl;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,12 +22,18 @@ public class SalesImplementation implements SalesDAO {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SalesImplementation.class);
 
 	public int addSalesDetails(Sales se) throws Exception {
+//
+//		String sql = "insert into sales(sales_id,product_id,sales_date,sales_quantity,amount) values ("
+//				+ se.getSalesId() + "," + se.getProductId() + ",SYSDATE," + se.getSalesQuantity() + "," + se.getAmount()
+//				+ ")";
 
-		String sql = "insert into sales(sales_id,product_id,sales_date,sales_quantity,amount) values ("
-				+ se.getSalesId() + "," + se.getProductId() + ",SYSDATE," + se.getSalesQuantity() + "," + se.getAmount()
-				+ ")";
-		try (Connection con = TestConnection.getConnection(); Statement stmt = con.createStatement();) {
-			int row = stmt.executeUpdate(sql);
+		String sql = "insert into sales(sales_id,product_id,sales_date,sales_quantity,amount) values (?,?,SYSDATE,?,?)";
+		try (Connection con = TestConnection.getConnection(); PreparedStatement stmp = con.prepareStatement(sql);) {
+			stmp.setInt(1, se.getSalesId());
+			stmp.setInt(2, se.getProductId());
+			stmp.setInt(3, se.getSalesQuantity());
+			stmp.setInt(4, se.getAmount());
+			int row = stmp.executeUpdate();
 			return row;
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -37,8 +44,7 @@ public class SalesImplementation implements SalesDAO {
 
 	public int amountCalAfterSales(int productId, int salesId) throws Exception {
 		String sql = "Select cost from product where product_id=" + productId + "";
-		try (Connection con = TestConnection.getConnection(); 
-				Statement stmt = con.createStatement();) {
+		try (Connection con = TestConnection.getConnection(); Statement stmt = con.createStatement();) {
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
 
@@ -62,11 +68,10 @@ public class SalesImplementation implements SalesDAO {
 					return row;
 				}
 			}
-		}
-		catch (SQLException e2) {
+		} catch (SQLException e2) {
 			e2.printStackTrace();
 			throw new DbException(InfoMessages.CONNECTION);
-		
+
+		}
 	}
-}
 }

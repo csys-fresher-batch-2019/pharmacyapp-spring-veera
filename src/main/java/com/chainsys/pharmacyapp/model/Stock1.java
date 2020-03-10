@@ -17,5 +17,5 @@ public class Stock1 {
 	private int purchaseQuantity;
 	private int salesQuantity;
 	private int closingStock;
-	
+
 }
