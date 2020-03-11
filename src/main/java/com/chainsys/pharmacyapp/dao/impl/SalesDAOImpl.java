@@ -22,10 +22,12 @@ public class SalesDAOImpl implements SalesDAO {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SalesDAOImpl.class);
 
 	public int save(Sales se) throws Exception {
-//
-//		String sql = "insert into sales(sales_id,product_id,sales_date,sales_quantity,amount) values ("
-//				+ se.getSalesId() + "," + se.getProductId() + ",SYSDATE," + se.getSalesQuantity() + "," + se.getAmount()
-//				+ ")";
+		//
+		// String sql = "insert into
+		// sales(sales_id,product_id,sales_date,sales_quantity,amount) values ("
+		// + se.getSalesId() + "," + se.getProductId() + ",SYSDATE," +
+		// se.getSalesQuantity() + "," + se.getAmount()
+		// + ")";
 
 		String sql = "insert into sales(sales_id,product_id,sales_date,sales_quantity,amount) values (?,?,SYSDATE,?,?)";
 		try (Connection con = ConnectionUtil.getConnection(); PreparedStatement stmp = con.prepareStatement(sql);) {
@@ -45,28 +47,41 @@ public class SalesDAOImpl implements SalesDAO {
 	public int amountCalAfterSales(int productId, int salesId) throws Exception {
 		String sql = "Select cost from product where product_id=" + productId + "";
 		try (Connection con = ConnectionUtil.getConnection(); Statement stmt = con.createStatement();) {
-			ResultSet rs = stmt.executeQuery(sql);
-			rs.next();
+			try (ResultSet rs = stmt.executeQuery(sql);) {
+				rs.next();
 
-			int p1 = rs.getInt(1);
-			System.out.println(p1);
-			String sql1 = "select sales_quantity from sales where sales_id=" + salesId + "";
-			LOGGER.info(sql1);
-			// ResultSet rs1;
-			int co = 0;
-			try (Connection con1 = ConnectionUtil.getConnection(); Statement pst1 = con1.createStatement();) {
-				ResultSet rs1 = pst1.executeQuery(sql1);
-				if (rs1.next()) {
-					co = rs1.getInt(1);
+				int p1 = rs.getInt(1);
+				System.out.println(p1);
+				String sql1 = "select sales_quantity from sales where sales_id=" + salesId + "";
+				LOGGER.info(sql1);
+				// ResultSet rs1;
+				int co = 0;
+				try (Connection con1 = ConnectionUtil.getConnection(); Statement pst1 = con1.createStatement();) {
+					try (ResultSet rs1 = pst1.executeQuery(sql1);) {
+						if (rs1.next()) {
+							co = rs1.getInt(1);
+						}
+						LOGGER.info("co");
+						int amount = p1 * co;
+						LOGGER.info("amount");
+						String sql2 = "update sales set amount=" + amount + " where sales_id= " + salesId + "";
+						try (Connection con2 = ConnectionUtil.getConnection();
+								Statement pst2 = con2.createStatement();) {
+							int row = pst2.executeUpdate(sql2);
+							return row;
+						}
+					}catch (Exception e3) {
+						throw new DbException(InfoMessages.INVALID_AMOUNTCALAFTERSALES );
+					}
+					
+				}catch (SQLException e2) {
+					e2.printStackTrace();
+					throw new DbException(InfoMessages.CONNECTION);
+
 				}
-				LOGGER.info("co");
-				int amount = p1 * co;
-				LOGGER.info("amount");
-				String sql2 = "update sales set amount=" + amount + " where sales_id= " + salesId + "";
-				try (Connection con2 = ConnectionUtil.getConnection(); Statement pst2 = con2.createStatement();) {
-					int row = pst2.executeUpdate(sql2);
-					return row;
-				}
+			}
+			catch (Exception e3) {
+				throw new DbException(InfoMessages.INVALID_AMOUNTCALAFTERSALES );
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.chainsys.pharmacyapp.Exception.DbException;
@@ -15,6 +17,7 @@ import com.chainsys.pharmacyapp.util.ConnectionUtil;
 @Repository
 
 public class AdminDAOImpl implements AdminDAO {
+	private static final Logger LOGGER = LoggerFactory.getLogger(PurchaseDAOImpl.class);
 
 	public boolean AdminLogin(String Adminname, String pass) throws Exception {
 		String sql = "select pass_word from AdminRegister where Admin_name=(select Admin_name from AdminRegister where Admin_name=?)";
@@ -29,7 +32,8 @@ public class AdminDAOImpl implements AdminDAO {
 
 			}
 		} catch (SQLException e2) {
-			e2.printStackTrace();
+		//	e2.printStackTrace();
+			LOGGER.error("Ops!", e2);
 			throw new DbException(InfoMessages.INVALID_lOGIN);
 		}
 		return false;

@@ -1,13 +1,13 @@
 package com.chainsys.pharmacyappspring;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class controller {
-	private static final Logger logger = LoggerFactory.getLogger(controller.class);
+public class Logger {
+
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(Logger.class);
 
 	@RequestMapping("/")
 	public String index() {

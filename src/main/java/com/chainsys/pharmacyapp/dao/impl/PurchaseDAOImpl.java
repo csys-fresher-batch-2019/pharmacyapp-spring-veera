@@ -32,7 +32,8 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 			LOGGER.info("sql");
 			return row;
 		} catch (SQLException e2) {
-			e2.printStackTrace();
+			//e2.printStackTrace();
+			LOGGER.error("Ops!", e2);
 			throw new DbException(InfoMessages.INVALID_PURCHASE);
 		}
 	}
@@ -40,10 +41,11 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 	public int amountCalculation(int productId, int purchaseId) throws Exception {
 		String sql = "select purchase_quantity from purchase where purchase_id = ?";
 		try (Connection con = ConnectionUtil.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+			try(ResultSet rs = pst.executeQuery();)
+			{
 			pst.setInt(1, productId);
 
 			int quantity = 0, co = 0;
-			ResultSet rs = pst.executeQuery();
 
 			if (rs.next()) {
 				quantity = rs.getInt("purchase_quantity");// coloumn number
@@ -72,9 +74,13 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 					return row;
 				}
 			}
-		} catch (SQLException e2) {
+		} catch (Exception e2) {
 			e2.printStackTrace();
-			throw new DbException(InfoMessages.CONNECTION);
+			throw new DbException(InfoMessages.INVALID_AMOUNTCALACULATION);
 		}
-	}
+	}catch (SQLException e2) {
+		e2.printStackTrace();
+		throw new DbException(InfoMessages.CONNECTION);
+}
+}
 }

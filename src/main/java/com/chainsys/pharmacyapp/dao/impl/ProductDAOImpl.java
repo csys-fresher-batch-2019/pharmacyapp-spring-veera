@@ -99,9 +99,10 @@ public class ProductDAOImpl implements ProductDAO {
 		String sql = "select product_id, product_name,product_type,cost,quantity,expiry_date from product where product_id=?";
 
 		try (Connection con = ConnectionUtil.getConnection(); PreparedStatement stmp = con.prepareStatement(sql);) {
+			try(ResultSet rs = stmp.executeQuery();)
+			{
 			Product obj = new Product();
 			stmp.setInt(1, numb);
-			ResultSet rs = stmp.executeQuery();
 			ArrayList<Product> out = new ArrayList<Product>();
 			while (rs.next()) {
 
@@ -124,5 +125,8 @@ public class ProductDAOImpl implements ProductDAO {
 		} catch (SQLException e2) {
 			throw new DbException(InfoMessages.INVALID_SELECTPRODUCT);
 		}
+	}catch (SQLException e2) {
+		throw new DbException(InfoMessages.CONNECTION);
 	}
+}
 }

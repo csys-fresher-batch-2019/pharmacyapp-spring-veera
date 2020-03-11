@@ -18,5 +18,7 @@ public class InfoMessages {
 	public static final String INVALID_SELECTPRODUCT = "Unable to Select the Product";
 	public static final String INVALID_UPDATECLOSINGSTOCK = "Unable to Update the stock";
 	public static final String INVALID_UPDATEOPENINGSTOCK = "Unable to Update the stock";
+	public static final String INVALID_AMOUNTCALAFTERSALES = "Unable to Calculate the Amount";
+	public static final String INVALID_AMOUNTCALACULATION= "Unable to Calculate the Amount";
 
 }

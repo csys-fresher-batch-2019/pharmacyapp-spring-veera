@@ -55,7 +55,6 @@ public class OrderDAOImpl implements OrderDAO {
 					obj.setEmailId(rs.getString("Email_id"));
 					obj.setContact(rs.getLong("contact"));
 					out.add(obj);
-
 				}
 				for (Order O : out) {
 					LOGGER.info("OrderId: " + O.getOrderId() + ",UserName: " + O.getUserName() + ",ProductName: "
@@ -63,11 +62,9 @@ public class OrderDAOImpl implements OrderDAO {
 							+ ",Contact:" + O.getContact() + "\n");
 				}
 				return out;
-
 			} catch (Exception e3) {
 				throw new DbException(InfoMessages.INVALID_ORDERDISPLAY);
 			}
-
 		} catch (SQLException e2) {
 			throw new DbException(InfoMessages.CONNECTION);
 
