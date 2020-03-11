@@ -32,6 +32,7 @@ public class ProductDAOImpl implements ProductDAO {
 			LOGGER.info("",row);
 			return row;
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			throw new DbException(InfoMessages.INVALID_ADDPRODUCT);
 		}
 	}
@@ -45,6 +46,7 @@ public class ProductDAOImpl implements ProductDAO {
 			LOGGER.info("",row);
 			return row;
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			throw new DbException(InfoMessages.INVALID_PRODUCTUPDATETYPE);
 		}
 
@@ -59,6 +61,7 @@ public class ProductDAOImpl implements ProductDAO {
 			LOGGER.info("",pr);
 			return pr;
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			throw new DbException(InfoMessages.INVALID_UPDATECOST);
 		}
 
@@ -85,10 +88,12 @@ public class ProductDAOImpl implements ProductDAO {
 					return out;
 				}
 			} catch (Exception e2) {
+				LOGGER.debug(e2.getMessage());
 				throw new DbException(InfoMessages.INVALID_DISPLAYPRODUCT);
 			}
 			return null;
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			throw new DbException(InfoMessages.CONNECTION);
 		}
 	}
@@ -122,9 +127,11 @@ public class ProductDAOImpl implements ProductDAO {
 			}
 			return out;
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			throw new DbException(InfoMessages.INVALID_SELECTPRODUCT);
 		}
 	}catch (SQLException e2) {
+		LOGGER.debug(e2.getMessage());
 		throw new DbException(InfoMessages.CONNECTION);
 	}
 }

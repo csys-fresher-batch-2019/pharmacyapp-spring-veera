@@ -44,6 +44,7 @@ public class Stock1DAOImpl implements Stock1DAO {
 			pst.execute();
 			return 0;
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			e2.printStackTrace();
 			throw new DbException(InfoMessages.INVALID_UPDATECLOSINGSTOCK);
 		}
@@ -60,6 +61,7 @@ public class Stock1DAOImpl implements Stock1DAO {
 			LOGGER.info("",row);
 			return row;
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			e2.printStackTrace();
 			throw new DbException(InfoMessages.INVALID_UPDATEOPENINGSTOCK);
 		}

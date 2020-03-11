@@ -29,6 +29,7 @@ public class CompanyDAOImpl implements CompanyDAO {
 			pst.setString(4, p.getCompanyAddress());
 			n = pst.executeUpdate();
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			throw new DbException(InfoMessages.INVALID_COMPANY);
 		}
 		return n;

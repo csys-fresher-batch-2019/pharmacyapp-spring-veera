@@ -35,6 +35,7 @@ public class OrderDAOImpl implements OrderDAO {
 			stmp.setLong(6, O.getContact());
 			stmp.executeUpdate();
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			throw new DbException(InfoMessages.INVALID_ORDER);
 		}
 	}
@@ -63,6 +64,8 @@ public class OrderDAOImpl implements OrderDAO {
 				}
 				return out;
 			} catch (Exception e3) {
+				LOGGER.debug(e3.getMessage());
+
 				throw new DbException(InfoMessages.INVALID_ORDERDISPLAY);
 			}
 		} catch (SQLException e2) {

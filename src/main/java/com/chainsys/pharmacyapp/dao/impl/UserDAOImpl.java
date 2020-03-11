@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.chainsys.pharmacyapp.Exception.DbException;
@@ -17,6 +17,7 @@ import com.chainsys.pharmacyapp.util.ConnectionUtil;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
+	private static final Logger LOGGER = LoggerFactory.getLogger(Stock1DAOImpl.class);
 
 	public int save(UserDetails p) throws Exception {
 		String sql = "insert into UserRegister(name,Email_id,password,contact) values (?,?,?,?)";
@@ -28,6 +29,7 @@ public class UserDAOImpl implements UserDAO {
 			int row = pst.executeUpdate();
 			return row;
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			e2.printStackTrace();
 			throw new DbException(InfoMessages.INVALID_lOGIN);
 		}
@@ -47,6 +49,7 @@ public class UserDAOImpl implements UserDAO {
 			}
 			return false;
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			e2.printStackTrace();
 			throw new DbException(InfoMessages.INVALID_lOGIN);
 		}

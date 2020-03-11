@@ -32,7 +32,6 @@ public class AdminDAOImpl implements AdminDAO {
 
 			}
 		} catch (SQLException e2) {
-		//	e2.printStackTrace();
 			LOGGER.error("Ops!", e2);
 			throw new DbException(InfoMessages.INVALID_lOGIN);
 		}

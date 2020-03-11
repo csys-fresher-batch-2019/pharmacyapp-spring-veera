@@ -38,6 +38,7 @@ public class SalesDAOImpl implements SalesDAO {
 			int row = stmp.executeUpdate();
 			return row;
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			e2.printStackTrace();
 			throw new DbException(InfoMessages.CONNECTION);
 		}
@@ -71,19 +72,23 @@ public class SalesDAOImpl implements SalesDAO {
 							return row;
 						}
 					}catch (Exception e3) {
+						LOGGER.debug(e3.getMessage());
 						throw new DbException(InfoMessages.INVALID_AMOUNTCALAFTERSALES );
 					}
 					
 				}catch (SQLException e2) {
+					LOGGER.debug(e2.getMessage());
 					e2.printStackTrace();
 					throw new DbException(InfoMessages.CONNECTION);
 
 				}
 			}
 			catch (Exception e3) {
+				LOGGER.debug(e3.getMessage());
 				throw new DbException(InfoMessages.INVALID_AMOUNTCALAFTERSALES );
 			}
 		} catch (SQLException e2) {
+			LOGGER.debug(e2.getMessage());
 			e2.printStackTrace();
 			throw new DbException(InfoMessages.CONNECTION);
 

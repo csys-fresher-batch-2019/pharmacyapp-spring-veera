@@ -76,10 +76,12 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 			}
 		} catch (Exception e2) {
 			e2.printStackTrace();
+			LOGGER.debug(e2.getMessage());
 			throw new DbException(InfoMessages.INVALID_AMOUNTCALACULATION);
 		}
 	}catch (SQLException e2) {
 		e2.printStackTrace();
+		LOGGER.debug(e2.getMessage());
 		throw new DbException(InfoMessages.CONNECTION);
 }
 }
