@@ -7,14 +7,14 @@ import com.chainsys.pharmacyapp.dao.impl.OrderDAOImpl;
 import com.chainsys.pharmacyapp.model.Order;
 
 public class OrderService {
-	OrderDAO o = new OrderDAOImpl();
+	OrderDAO orderDAO = new OrderDAOImpl();
 
 	public void save(Order O) throws Exception {
-		o.save(O);
+		orderDAO.save(O);
 	}
 
 	public ArrayList displayOrderDetails() throws Exception {
-		return o.displayOrderDetails();
+		return orderDAO.displayOrderDetails();
 
 	}
 }

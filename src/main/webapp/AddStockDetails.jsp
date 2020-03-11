@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+
 <html>
 <head>
 <link rel="stylesheet"
@@ -23,9 +25,7 @@
 				<br /> SalesQuantity: <input type="number" name="salesQuantity"
 					placeholder="SalesQuantity" required autofocus /><br />
 				<br />
-				<!-- <button type="submit">ADD</button><br/>
-<button><a href="Adminaccess.jsp">Back</a></button>
- -->
+				
 
 				<button type="submit" class="btn btn-primary">ADD</button>
 				<a href="Adminaccess.jsp"><button type="submit"

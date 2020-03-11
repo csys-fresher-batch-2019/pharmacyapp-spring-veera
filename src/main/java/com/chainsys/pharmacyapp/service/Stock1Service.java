@@ -5,20 +5,20 @@ import com.chainsys.pharmacyapp.dao.impl.Stock1DAOImpl;
 import com.chainsys.pharmacyapp.model.Stock1;
 
 public class Stock1Service {
-	Stock1DAO S = new Stock1DAOImpl();
+	Stock1DAO stockDAO = new Stock1DAOImpl();
 
 	public int save(Stock1 s) throws Exception {
-		return S.save(s);
+		return stockDAO.save(s);
 
 	}
 
 	public int updateClosingStock(Stock1 s) throws Exception {
-		return S.updateClosingStock(s);
+		return stockDAO.updateClosingStock(s);
 
 	}
 
 	public int updateOpeningStock(int stockId) throws Exception {
-		return S.updateOpeningStock(stockId);
+		return stockDAO.updateOpeningStock(stockId);
 
 	}
 }

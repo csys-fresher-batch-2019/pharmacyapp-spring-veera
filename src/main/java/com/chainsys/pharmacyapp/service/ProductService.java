@@ -8,27 +8,27 @@ import com.chainsys.pharmacyapp.model.Product;
 
 public class ProductService {
 
-	ProductDAO pa = new ProductDAOImpl();
+	ProductDAO productDAO = new ProductDAOImpl();
 
 	public int save(Product p) throws Exception {
-		return pa.save(p);
+		return productDAO.save(p);
 
 	}
 
 	public int updateProductType(int productId, String productType) throws Exception {
-		return pa.updateProductType(productId, productType);
+		return productDAO.updateProductType(productId, productType);
 	}
 
 	public int updateCost(int proId, int cost) throws Exception {
-		return pa.updateCost(proId, cost);
+		return productDAO.updateCost(proId, cost);
 	}
 
 	public ArrayList displayProduct() throws Exception {
-		return pa.displayProduct();
+		return productDAO.displayProduct();
 	}
 
 	public ArrayList selectProductId(int d2) throws Exception {
-		return pa.selectProductId(d2);
+		return productDAO.selectProductId(d2);
 	}
 
 }

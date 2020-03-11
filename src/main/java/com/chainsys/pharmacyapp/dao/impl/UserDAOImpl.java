@@ -17,7 +17,6 @@ import com.chainsys.pharmacyapp.util.ConnectionUtil;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
-	static Scanner sc = new Scanner(System.in);
 
 	public int save(UserDetails p) throws Exception {
 		String sql = "insert into UserRegister(name,Email_id,password,contact) values (?,?,?,?)";

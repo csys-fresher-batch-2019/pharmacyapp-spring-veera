@@ -30,7 +30,6 @@ public class AddProductDetails extends HttpServlet {
 
 		ProductService pi = new ProductService();
 
-		// ProductImplementation Pi=new ProductImplementation();
 		Product p = new Product();
 		p.setProductId(productId);
 		p.setProductName(productName);
@@ -40,7 +39,6 @@ public class AddProductDetails extends HttpServlet {
 		p.setExpiryDate(date);
 		try {
 			int n = pi.save(p);
-			System.out.println(n);
 			if (n == 1) {
 				RequestDispatcher d = request.getRequestDispatcher("AddProductDetails.jsp");
 				d.forward(request, response);

@@ -22,7 +22,6 @@ public class ProductDAOImpl implements ProductDAO {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductDAOImpl.class);
 
 	public int save(Product p) throws Exception {
-		// Date date = Date.valueOf(p.getExpiryDate());
 		java.sql.Date date = java.sql.Date.valueOf(p.getExpiryDate());
 
 		String sql = "insert into product(product_id,product_name,product_type,cost,quantity,expiry_date) " + "values("
@@ -30,7 +29,7 @@ public class ProductDAOImpl implements ProductDAO {
 				+ "','" + p.getQuantity() + "',to_date('" + date + "','yyyy-MM-DD'))";
 		try (Connection c1 = ConnectionUtil.getConnection(); Statement stmt = c1.createStatement();) {
 			int row = stmt.executeUpdate(sql);
-			LOGGER.info("row");
+			LOGGER.info("",row);
 			return row;
 		} catch (SQLException e2) {
 			throw new DbException(InfoMessages.INVALID_ADDPRODUCT);
@@ -43,7 +42,7 @@ public class ProductDAOImpl implements ProductDAO {
 			stmp.setString(1, pT);
 			stmp.setInt(2, pId);
 			int row = stmp.executeUpdate();
-			LOGGER.info("row");
+			LOGGER.info("",row);
 			return row;
 		} catch (SQLException e2) {
 			throw new DbException(InfoMessages.INVALID_PRODUCTUPDATETYPE);
@@ -57,7 +56,7 @@ public class ProductDAOImpl implements ProductDAO {
 			stmp.setInt(1, cost);
 			stmp.setInt(2, proId);
 			int pr = stmp.executeUpdate();
-			LOGGER.info("pr");
+			LOGGER.info("",pr);
 			return pr;
 		} catch (SQLException e2) {
 			throw new DbException(InfoMessages.INVALID_UPDATECOST);

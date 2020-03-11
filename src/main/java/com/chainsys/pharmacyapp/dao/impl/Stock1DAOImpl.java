@@ -24,12 +24,12 @@ public class Stock1DAOImpl implements Stock1DAO {
 
 		String sql = "insert into stock1(stock_id,stock_date,product_id,opening_stock,purchase_quantity,sales_quantity,closing_stock)  values (stock_id.nextval,SYSDATE,?,?,?,?)";
 		try (Connection c1 = ConnectionUtil.getConnection(); PreparedStatement stmp = c1.prepareStatement(sql);) {
-			int row = stmp.executeUpdate();
 			stmp.setInt(1, s.getProductId());
 			stmp.setInt(2, s.getOpeningStock());
 			stmp.setInt(3, s.getPurchaseQuantity());
 			stmp.setInt(4, s.getSalesQuantity());
-			LOGGER.info("row");
+			int row = stmp.executeUpdate();
+			LOGGER.info("",row); 
 			return row;
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -57,7 +57,7 @@ public class Stock1DAOImpl implements Stock1DAO {
 			Stock1 o = new Stock1();
 			pst1.setInt(1, o.getStockId());
 			int row = pst1.executeUpdate();
-			LOGGER.info("row");
+			LOGGER.info("",row);
 			return row;
 		} catch (SQLException e2) {
 			e2.printStackTrace();

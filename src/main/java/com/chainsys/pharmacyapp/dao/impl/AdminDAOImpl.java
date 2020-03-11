@@ -19,10 +19,10 @@ import com.chainsys.pharmacyapp.util.ConnectionUtil;
 public class AdminDAOImpl implements AdminDAO {
 	private static final Logger LOGGER = LoggerFactory.getLogger(PurchaseDAOImpl.class);
 
-	public boolean AdminLogin(String Adminname, String pass) throws Exception {
+	public boolean AdminLogin(String adminname, String pass) throws Exception {
 		String sql = "select pass_word from AdminRegister where Admin_name=(select Admin_name from AdminRegister where Admin_name=?)";
 		try (Connection con = ConnectionUtil.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
-			pst.setString(1, Adminname);
+			pst.setString(1, adminname);
 			ResultSet rs1 = pst.executeQuery();
 			if (rs1.next()) {
 				String password = rs1.getString("pass_word");

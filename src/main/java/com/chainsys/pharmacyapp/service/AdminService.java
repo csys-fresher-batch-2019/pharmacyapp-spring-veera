@@ -5,11 +5,11 @@ import com.chainsys.pharmacyapp.dao.impl.AdminDAOImpl;
 
 public class AdminService {
 
-	AdminDAO ad = new AdminDAOImpl();
+	AdminDAO adminDAO = new AdminDAOImpl();
 
 	public boolean AdminLogin(String Adminname, String pass) throws Exception {
 
-		return ad.AdminLogin(Adminname, pass);
+		return adminDAO.AdminLogin(Adminname, pass);
 
 	}
 }

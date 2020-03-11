@@ -26,7 +26,6 @@ public class AddPurchaseDetails extends HttpServlet {
 		int purchaseQuantity = Integer.parseInt(request.getParameter("purchaseQuantity"));
 		int Amount = Integer.parseInt(request.getParameter("Amount"));
 		PurchaseService p = new PurchaseService();
-		// PurchaseImplementation p=new PurchaseImplementation();
 		Purchase Pu = new Purchase();
 		Pu.setProductId(productId);
 		Pu.setCompanyId(companyId);
@@ -34,7 +33,6 @@ public class AddPurchaseDetails extends HttpServlet {
 		Pu.setAmount(Amount);
 		try {
 			int n = p.save(Pu);
-			System.out.println(n);
 			if (n == 1) {
 
 				PrintWriter out = response.getWriter();

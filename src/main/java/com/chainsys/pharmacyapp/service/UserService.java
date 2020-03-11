@@ -6,15 +6,15 @@ import com.chainsys.pharmacyapp.model.UserDetails;
 
 public class UserService {
 
-	UserDAO u = new UserDAOImpl();
+	UserDAO userDAO = new UserDAOImpl();
 
 	public int save(UserDetails p) throws Exception {
-		return u.save(p);
+		return userDAO.save(p);
 
 	}
 
 	public boolean user(String name, String password) throws Exception {
-		return u.user(name, password);
+		return userDAO.user(name, password);
 
 	}
 }
