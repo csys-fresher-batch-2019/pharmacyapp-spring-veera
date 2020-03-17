@@ -16,6 +16,7 @@ import com.chainsys.pharmacyapp.service.SalesService;
 public class AddSalesDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -31,7 +32,7 @@ public class AddSalesDetails extends HttpServlet {
 		l.setSalesQuantity(salesQuantity);
 		l.setAmount(Amount);
 		try {
-			int n = s.save(l);
+			int n = s.saveSales(l);
 			if (n == 1) {
 				PrintWriter out = response.getWriter();
 				out.println("\n");

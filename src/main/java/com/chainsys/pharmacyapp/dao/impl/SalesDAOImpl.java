@@ -21,7 +21,8 @@ import com.chainsys.pharmacyapp.util.ConnectionUtil;
 public class SalesDAOImpl implements SalesDAO {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SalesDAOImpl.class);
 
-	public int save(Sales se) throws Exception {
+	@Override
+	public int saveSales(Sales se) throws Exception {
 		//
 		// String sql = "insert into
 		// sales(sales_id,product_id,sales_date,sales_quantity,amount) values ("
@@ -45,6 +46,7 @@ public class SalesDAOImpl implements SalesDAO {
 
 	}
 
+	@Override
 	public int amountCalAfterSales(int productId, int salesId) throws Exception {
 		String sql = "Select cost from product where product_id=" + productId + "";
 		try (Connection con = ConnectionUtil.getConnection(); Statement stmt = con.createStatement();) {
@@ -71,21 +73,20 @@ public class SalesDAOImpl implements SalesDAO {
 							int row = pst2.executeUpdate(sql2);
 							return row;
 						}
-					}catch (Exception e3) {
+					} catch (Exception e3) {
 						LOGGER.debug(e3.getMessage());
-						throw new DbException(InfoMessages.INVALID_AMOUNTCALAFTERSALES );
+						throw new DbException(InfoMessages.INVALID_AMOUNTCALAFTERSALES);
 					}
-					
-				}catch (SQLException e2) {
+
+				} catch (SQLException e2) {
 					LOGGER.debug(e2.getMessage());
 					e2.printStackTrace();
 					throw new DbException(InfoMessages.CONNECTION);
 
 				}
-			}
-			catch (Exception e3) {
+			} catch (Exception e3) {
 				LOGGER.debug(e3.getMessage());
-				throw new DbException(InfoMessages.INVALID_AMOUNTCALAFTERSALES );
+				throw new DbException(InfoMessages.INVALID_AMOUNTCALAFTERSALES);
 			}
 		} catch (SQLException e2) {
 			LOGGER.debug(e2.getMessage());

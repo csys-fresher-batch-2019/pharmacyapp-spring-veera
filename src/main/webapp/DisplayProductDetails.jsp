@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <%@page import="com.chainsys.pharmacyapp.model.Product"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.chainsys.pharmacyapp.dao.impl.ProductImplementation"%>
+<%@page import="com.chainsys.pharmacyapp.dao.impl.ProductDAOImpl"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -16,7 +16,7 @@
 		<h3>ProductList</h3>
 	</center>
 	<%
-		ProductImplementation dao = new ProductImplementation();
+		ProductDAOImpl dao = new ProductDAOImpl();
 		ArrayList<Product> list = dao.displayProduct();
 	%>
 	<center>

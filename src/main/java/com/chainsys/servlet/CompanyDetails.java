@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.pharmacyapp.model.CompanyModel;
+import com.chainsys.pharmacyapp.model.Company;
 import com.chainsys.pharmacyapp.service.CompanyService;
 
 @WebServlet("/CompanyDetails")
@@ -17,6 +17,7 @@ import com.chainsys.pharmacyapp.service.CompanyService;
 public class CompanyDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// int companyId=Integer.parseInt("companyId");
@@ -26,7 +27,7 @@ public class CompanyDetails extends HttpServlet {
 		String companyAddress = request.getParameter("companyAddress");
 		// CompanyImplementation im=new CompanyImplementation() ;
 		CompanyService im = new CompanyService();
-		CompanyModel m = new CompanyModel();
+		Company m = new Company();
 		m.setCompanyId(companyId);
 		m.setCompanyName(companyName);
 		m.setCompanyType(companyType);

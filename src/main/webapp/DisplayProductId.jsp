@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <%@page import="com.chainsys.pharmacyapp.model.Product"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.chainsys.pharmacyapp.dao.impl.ProductImplementation"%>
+<%@page import="com.chainsys.pharmacyapp.dao.impl.ProductDAOImpl"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" contentyh="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 

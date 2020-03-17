@@ -8,9 +8,9 @@ public class SalesService {
 
 	SalesDAO salesDAO = new SalesDAOImpl();
 
-	public int save(Sales se) throws Exception {
+	public int saveSales(Sales se) throws Exception {
 
-		return salesDAO.save(se);
+		return salesDAO.saveSales(se);
 
 	}
 

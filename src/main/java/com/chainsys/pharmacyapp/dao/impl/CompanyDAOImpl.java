@@ -12,14 +12,14 @@ import org.springframework.stereotype.Repository;
 import com.chainsys.pharmacyapp.Exception.DbException;
 import com.chainsys.pharmacyapp.Exception.InfoMessages;
 import com.chainsys.pharmacyapp.dao.CompanyDAO;
-import com.chainsys.pharmacyapp.model.CompanyModel;
+import com.chainsys.pharmacyapp.model.Company;
 import com.chainsys.pharmacyapp.util.ConnectionUtil;
 
 @Repository
 public class CompanyDAOImpl implements CompanyDAO {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CompanyDAOImpl.class);
 
-	public int saveCompanyDetails(CompanyModel p) throws Exception {
+	public int saveCompanyDetails(Company p) throws Exception {
 		int n = 0;
 		String sql = "Insert into company( company_id, company_name, company_type,company_address) values (?,?,?,?)";
 		try (Connection con = ConnectionUtil.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {

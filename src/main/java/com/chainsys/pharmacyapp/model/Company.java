@@ -13,7 +13,7 @@ import lombok.ToString;
 @Data
 @ToString
 @NoArgsConstructor
-public class CompanyModel {
+public class Company {
 	private int companyId;
 	private String companyName;
 	private String companyType;
